@@ -19,4 +19,3 @@ const errorCode = ref<number>(404)
     </div>
   </div>
 </template>
-
