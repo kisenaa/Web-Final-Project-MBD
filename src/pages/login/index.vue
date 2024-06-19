@@ -5,7 +5,7 @@ defineOptions({
 </script>
 
 <template>
-  <div class="h-screen flex justify-center items-center">
-    <div class="text-blue-600 text-6xl">Login / Register page here</div>
+  <div class="flex h-screen items-center justify-center">
+    <div class="text-6xl text-blue-600">Login / Register page here</div>
   </div>
 </template>
