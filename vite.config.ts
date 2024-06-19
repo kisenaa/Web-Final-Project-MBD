@@ -8,6 +8,7 @@ import IconsResolver from 'unplugin-icons/resolver'
 import Inspect from 'vite-plugin-inspect'
 import { VitePWA } from 'vite-plugin-pwa'
 import VueDevTools from 'vite-plugin-vue-devtools'
+import svgLoader from 'vite-svg-loader'
 
 // vite.config.ts
 
@@ -97,8 +98,8 @@ export default defineConfig({
     // https://github.com/webfansplz/vite-plugin-vue-devtools
     VueDevTools(),
 
-    // https://github.com/unocss/unocss
-    // see unocss.config.ts for config
+    //svg loader
+    svgLoader(),
   ],
   resolve: {
     alias: {
