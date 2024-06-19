@@ -1,7 +1,9 @@
-import eslint from '@eslint/js'
-import tseslint from 'typescript-eslint'
-import pluginVue from 'eslint-plugin-vue'
-import eslintConfigPrettier from 'eslint-config-prettier'
+import eslint from '@eslint/js';
+import tseslint from 'typescript-eslint';
+import pluginVue from 'eslint-plugin-vue';
+import parser from '@typescript-eslint/parser';
+import eslintConfigPrettier from 'eslint-config-prettier';
+import tailwind from 'eslint-plugin-tailwindcss';
 import globals from 'globals'
 
 export default tseslint.config(
@@ -9,13 +11,16 @@ export default tseslint.config(
   ...tseslint.configs.recommended,
   ...tseslint.configs.stylistic,
   ...pluginVue.configs['flat/recommended'],
+  ...tailwind.configs['flat/recommended'],
   {
     plugins: {
-      'typescript-eslint': tseslint.plugin,
+      'typescript-eslint': tseslint,
+      'vue': pluginVue,
+      'tailwindcss': tailwind,
     },
     languageOptions: {
       parserOptions: {
-        parser: tseslint.parser,
+        parser: parser,
         project: './tsconfig.json',
         extraFileExtensions: ['.vue'],
         sourceType: 'module',
@@ -41,6 +46,15 @@ export default tseslint.config(
         ...globals.browser,
       },
     },
+    "rules": {
+      "no-undef": "warn",
+      "@typescript-eslint/no-unused-vars": "warn",
+      'no-unused-vars': 'off',
+      'no-console': 'warn',
+      '@typescript-eslint/ban-ts-comment': 'off',
+      '@typescript-eslint/explicit-module-boundary-types': 'off',
+      'vue/require-default-prop': 'off',
+    }
   },
   eslintConfigPrettier
-)
+);
