@@ -17,7 +17,7 @@
     "test": "vitest",
     "test:unit": "vitest",
     "test:coverage": "vitest run --coverage",
-    "prepare": "husky init",
+    "prepare": "husky",
     "preinstall": "npx only-allow pnpm"
   },
   "dependencies": {
