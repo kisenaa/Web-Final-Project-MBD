@@ -13,7 +13,7 @@
     "preview": "vite preview",
     "lint": "eslint .",
     "lint:fix": "eslint \"./src/**/*.{ts,tsx,vue}\" --cache --fix",
-    "format": "prettier . --write",
+    "format": "prettier \"./src/**/*.{ts,tsx,vue}\" --write",
     "test": "vitest",
     "test:unit": "vitest",
     "test:coverage": "vitest run --coverage",
