@@ -6,3 +6,23 @@ export enum PageConstant {
   // error page path
   ERROR_PAGE = '/exception',
 }
+
+// sidebar extion
+export enum action {
+  tables,
+  people,
+  project,
+  calendar,
+  timesheet,
+  reports,
+  rooms,
+  subject,
+}
+
+// role or auth type
+export enum role {
+  admin,
+  asdos,
+  student,
+  guest,
+}

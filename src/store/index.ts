@@ -1,13 +1,11 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-import { counter } from './counter'
+import { auth, sidebar } from './store';
 
-const appStore: any = {}
+const registerStore = () => {
+  return {
+    sidebar: sidebar(),
+    auth: auth(),
+  };
+};
 
-/**
- * 注册app状态库
- */
-export function registerStore() {
-  appStore.counter = counter()
-}
-
-export default appStore
+const AppStore = registerStore();
+export default AppStore;
