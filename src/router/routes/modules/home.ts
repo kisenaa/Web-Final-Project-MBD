@@ -17,6 +17,6 @@ const home = [
     name: 'DashboardPage',
     component: () => import('~/pages/dashboard/index.vue'),
   },
-]
+];
 
-export default home
+export default home;

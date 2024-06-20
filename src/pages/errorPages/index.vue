@@ -1,9 +1,9 @@
 <script setup lang="ts">
 defineOptions({
   name: 'ErrorPage',
-})
-const router = useRouter()
-const errorCode = ref<number>(404)
+});
+const router = useRouter();
+const errorCode = ref<number>(404);
 </script>
 
 <template>
