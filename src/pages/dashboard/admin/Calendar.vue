@@ -2,5 +2,5 @@
 <script setup lang="ts"></script>
 
 <template>
-  <div class="text-center">Calendar</div>
+  <div class="text-center">Calendar for admin</div>
 </template>

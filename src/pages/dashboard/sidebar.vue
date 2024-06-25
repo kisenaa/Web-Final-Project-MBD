@@ -1,17 +1,12 @@
 <!-- eslint-disable vue/multi-word-component-names -->
 <script setup lang="ts">
-import MaterialSymbolsDashboard from '~icons/material-symbols/dashboard';
-import MdiPeople from '~icons/mdi/people';
-import MdiCalendar from '~icons/mdi/calendar';
-import MdiHourglassEmpty from '~icons/mdi/hourglass-empty';
-import MdiChatAdd from '~icons/mdi/chat-add';
-import MdiOfficeBuildingPlus from '~icons/mdi/office-building-plus';
-import MdiBooks from '~icons/mdi/books';
 import MdiChevronDown from '~icons/mdi/chevron-down';
 import AppStore from '../../store';
-import { action, role } from '../../constant/pageConstant';
+import { role } from '../../constant/pageConstant';
+import AdminContent from './admin/Content.vue';
+import StudentContent from './student/Content.vue';
+import AsdosContent from './assistant/Content.vue';
 
-const sidebarStore = AppStore.sidebar;
 const auth = AppStore.auth;
 
 const displayRole = (value: role) => {
@@ -46,214 +41,17 @@ const displayRole = (value: role) => {
     <div
       class="mx-auto mt-6 flex max-h-[560px] max-w-[calc(100%-2rem)] flex-col gap-4"
     >
-      <button
-        class="flex min-h-14 items-center rounded-lg bg-gradient-to-tr pl-3 duration-200 ease-in hover:bg-slate-100"
-        :class="
-          sidebarStore.action === action.tables
-            ? 'bg-gradient-to-tr from-blue-200 to-blue-100'
-            : ''
-        "
-        @click="sidebarStore.setAction(action.tables)"
-      >
-        <MaterialSymbolsDashboard
-          class="size-7"
-          :class="
-            sidebarStore.action === action.tables
-              ? 'text-[#2F80ED]'
-              : 'text-gray-700'
-          "
-        />
-        <span
-          class="pl-5 font-medium"
-          :class="sidebarStore.action === action.tables ? 'text-[#2F80ED]' : ''"
-          >Tables</span
-        >
-      </button>
+      <template v-if="auth.role == role.admin || auth.role == role.guest">
+        <AdminContent />
+      </template>
 
-      <button
-        class="flex min-h-14 items-center rounded-lg pl-3 duration-200 ease-in hover:bg-slate-100"
-        :class="
-          sidebarStore.action === action.people
-            ? 'bg-gradient-to-tr from-blue-200 to-blue-100'
-            : ''
-        "
-        @click="sidebarStore.setAction(action.people)"
-      >
-        <MdiPeople
-          class="size-7"
-          :class="
-            sidebarStore.action === action.people
-              ? 'text-[#2F80ED]'
-              : 'text-gray-700'
-          "
-        />
-        <span
-          class="pl-5 font-medium"
-          :class="sidebarStore.action === action.people ? 'text-[#2F80ED]' : ''"
-          >People</span
-        >
-      </button>
+      <template v-if="auth.role == role.student">
+        <StudentContent />
+      </template>
 
-      <!-- Project -->
-      <button
-        class="flex min-h-14 items-center rounded-lg pl-3 duration-200 ease-in hover:bg-slate-100"
-        :class="
-          sidebarStore.action === action.project
-            ? 'bg-gradient-to-tr from-blue-200 to-blue-100'
-            : ''
-        "
-        @click="sidebarStore.setAction(action.project)"
-      >
-        <Icon
-          name="project"
-          class="w-[1.8rem]"
-          :class="
-            sidebarStore.action === action.project
-              ? 'text-[#2F80ED]'
-              : 'text-gray-700'
-          "
-        />
-        <span
-          class="pl-5 font-medium"
-          :class="
-            sidebarStore.action === action.project ? 'text-[#2F80ED]' : ''
-          "
-          >Project</span
-        >
-      </button>
-
-      <!-- Calendar -->
-      <button
-        class="flex min-h-14 items-center rounded-lg pl-3 duration-200 ease-in hover:bg-slate-100"
-        :class="
-          sidebarStore.action === action.calendar
-            ? 'bg-gradient-to-tr from-blue-200 to-blue-100'
-            : ''
-        "
-        @click="sidebarStore.setAction(action.calendar)"
-      >
-        <MdiCalendar
-          class="size-7"
-          :class="
-            sidebarStore.action === action.calendar
-              ? 'text-[#2F80ED]'
-              : 'text-gray-700'
-          "
-        />
-        <span
-          class="pl-5 font-medium"
-          :class="
-            sidebarStore.action === action.calendar ? 'text-[#2F80ED]' : ''
-          "
-          >Calendar</span
-        >
-      </button>
-
-      <!-- Timesheet -->
-      <button
-        class="flex min-h-14 items-center rounded-lg pl-3 duration-200 ease-in hover:bg-slate-100"
-        :class="
-          sidebarStore.action === action.timesheet
-            ? 'bg-gradient-to-tr from-blue-200 to-blue-100'
-            : ''
-        "
-        @click="sidebarStore.setAction(action.timesheet)"
-      >
-        <MdiHourglassEmpty
-          class="size-7"
-          :class="
-            sidebarStore.action === action.timesheet
-              ? 'text-[#2F80ED]'
-              : 'text-gray-700'
-          "
-        />
-        <span
-          class="pl-5 font-medium"
-          :class="
-            sidebarStore.action === action.timesheet ? 'text-[#2F80ED]' : ''
-          "
-          >Timesheet</span
-        >
-      </button>
-
-      <!-- Reports -->
-      <button
-        class="flex min-h-14 items-center rounded-lg pl-3 duration-200 ease-in hover:bg-slate-100"
-        :class="
-          sidebarStore.action === action.reports
-            ? 'bg-gradient-to-tr from-blue-200 to-blue-100'
-            : ''
-        "
-        @click="sidebarStore.setAction(action.reports)"
-      >
-        <MdiChatAdd
-          class="size-7"
-          :class="
-            sidebarStore.action === action.reports
-              ? 'text-[#2F80ED]'
-              : 'text-gray-700'
-          "
-        />
-        <span
-          class="pl-5 font-medium"
-          :class="
-            sidebarStore.action === action.reports ? 'text-[#2F80ED]' : ''
-          "
-          >Reports</span
-        >
-      </button>
-
-      <!-- Rooms -->
-      <button
-        class="flex min-h-14 items-center rounded-lg pl-3 duration-200 ease-in hover:bg-slate-100"
-        :class="
-          sidebarStore.action === action.rooms
-            ? 'bg-gradient-to-tr from-blue-200 to-blue-100'
-            : ''
-        "
-        @click="sidebarStore.setAction(action.rooms)"
-      >
-        <MdiOfficeBuildingPlus
-          class="size-7"
-          :class="
-            sidebarStore.action === action.rooms
-              ? 'text-[#2F80ED]'
-              : 'text-gray-700'
-          "
-        />
-        <span
-          class="pl-5 font-medium"
-          :class="sidebarStore.action === action.rooms ? 'text-[#2F80ED]' : ''"
-          >Rooms</span
-        >
-      </button>
-
-      <!-- Subject -->
-      <button
-        class="flex min-h-14 items-center rounded-lg pl-3 duration-200 ease-in hover:bg-slate-100"
-        :class="
-          sidebarStore.action === action.subject
-            ? 'bg-gradient-to-tr from-blue-200 to-blue-100'
-            : ''
-        "
-        @click="sidebarStore.setAction(action.subject)"
-      >
-        <MdiBooks
-          class="size-7"
-          :class="
-            sidebarStore.action === action.subject
-              ? 'text-[#2F80ED]'
-              : 'text-gray-700'
-          "
-        />
-        <span
-          class="pl-5 font-medium"
-          :class="
-            sidebarStore.action === action.subject ? 'text-[#2F80ED]' : ''
-          "
-          >Subject</span
-        >
-      </button>
+      <template v-if="auth.role == role.asdos">
+        <AsdosContent />
+      </template>
 
       <!-- Content here -->
     </div>

@@ -3,6 +3,12 @@
 import MdiStudent from '~icons/mdi/account-student';
 import MdiPersonStar from '~icons/mdi/person-star';
 import MdiShieldPerson from '~icons/mdi/shield-person';
+
+const router = useRouter();
+
+const navigate = () => {
+  router.push('dashboard');
+};
 </script>
 
 <template>
@@ -102,6 +108,7 @@ import MdiShieldPerson from '~icons/mdi/shield-person';
 
         <button
           class="my-4 w-full rounded-lg bg-blue-600 py-3 text-center text-white shadow-xl hover:brightness-90"
+          @click="navigate()"
         >
           Login Now
         </button>

@@ -6,7 +6,7 @@ import { IAuth } from '../Interface/interface';
 export const sidebar = defineStore('sidebar', {
   state: () => {
     return {
-      action: action.tables as action,
+      action: action.admin_tables as action,
     };
   },
   getters: {
