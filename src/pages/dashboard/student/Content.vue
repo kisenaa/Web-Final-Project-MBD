@@ -9,7 +9,7 @@ const sidebarStore = AppStore.sidebar;
 </script>
 
 <template>
-  <!-- Timesheet -->
+  <!-- Calendar -->
   <button
     class="flex min-h-14 items-center rounded-lg pl-3 duration-200 ease-in hover:bg-slate-100"
     :class="

@@ -72,12 +72,14 @@ defineOptions({
           </template>
         </template>
 
+        <!-- Student -->
         <template v-if="auth.role === role.student">
           <template v-if="sidebarStore.action === action.student_calendar">
             <StudentCalendar />
           </template>
         </template>
 
+        <!-- Assistant -->
         <template v-if="auth.role === role.asdos">
           <template v-if="sidebarStore.action === action.asdos_timesheet">
             <AssistantTimesheet />

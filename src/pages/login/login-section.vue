@@ -6,6 +6,9 @@ import MdiShieldPerson from '~icons/mdi/shield-person';
 
 const router = useRouter();
 
+const nrp = ref<string | null>('');
+const password = ref<string | null>('');
+
 const navigate = () => {
   router.push('dashboard');
 };
@@ -39,6 +42,9 @@ const navigate = () => {
             type="text"
             class="input grow rounded-lg pl-4"
             placeholder="Enter your email"
+            @change="
+              (event) => (nrp = (event.target as HTMLInputElement).value)
+            "
           />
           <div
             class="relative mr-auto flex size-[3.1rem] items-center justify-center rounded-lg bg-blue-600"
@@ -55,6 +61,9 @@ const navigate = () => {
             type="text"
             class="input grow rounded-lg pl-4"
             placeholder="Enter your password"
+            @change="
+              (event) => (password = (event.target as HTMLInputElement).value)
+            "
           />
           <div
             class="relative mr-auto flex size-[3.1rem] items-center justify-center rounded-lg bg-blue-600"
