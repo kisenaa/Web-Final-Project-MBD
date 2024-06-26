@@ -1,7 +1,6 @@
 import { defineStore } from 'pinia';
 import { action, role } from '../constant/pageConstant';
 import { IAuth } from '../Interface/interface';
-import piniaPluginPersistedstate from 'pinia-plugin-persistedstate'
 
 // Sidebar data
 export const sidebar = defineStore('sidebar', {
@@ -35,7 +34,11 @@ export const auth = defineStore('auth', {
     setAuth(auth: Partial<IAuth>) {
       Object.assign(this.$state, auth);
     },
-    
+    ResetAuth() {
+     this.username = 'Guest';
+     this.role = role.guest;
+     this.nrp = ''
+    }
   },
   persist: true
 });
