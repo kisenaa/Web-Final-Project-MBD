@@ -3,4 +3,8 @@
 .vscode
 build
 dist
+<<<<<<< HEAD
 server/.env
+=======
+pnpm-lock.yaml
+>>>>>>> homepage

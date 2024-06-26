@@ -125,16 +125,16 @@ const sidebarStore = AppStore.sidebar;
   <button
     class="flex min-h-14 items-center rounded-lg pl-3 duration-200 ease-in hover:bg-slate-100"
     :class="
-      sidebarStore.action === action.admin_timesheet
+      sidebarStore.action === action.admin_addPracticum
         ? 'bg-gradient-to-tr from-blue-200 to-blue-100'
         : ''
     "
-    @click="sidebarStore.setAction(action.admin_timesheet)"
+    @click="sidebarStore.setAction(action.admin_addPracticum)"
   >
     <MdiHourglassEmpty
       class="size-7"
       :class="
-        sidebarStore.action === action.admin_timesheet
+        sidebarStore.action === action.admin_addPracticum
           ? 'text-[#2F80ED]'
           : 'text-gray-700'
       "
@@ -142,9 +142,9 @@ const sidebarStore = AppStore.sidebar;
     <span
       class="pl-5 font-medium"
       :class="
-        sidebarStore.action === action.admin_timesheet ? 'text-[#2F80ED]' : ''
+        sidebarStore.action === action.admin_addPracticum ? 'text-[#2F80ED]' : ''
       "
-      >Timesheet</span
+      >Practicum</span
     >
   </button>
 

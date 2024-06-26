@@ -13,7 +13,7 @@ export enum action {
   admin_people,
   admin_project,
   admin_calendar,
-  admin_timesheet,
+  admin_addPracticum,
   admin_reports,
   admin_rooms,
   admin_subject,
