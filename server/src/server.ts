@@ -24,7 +24,7 @@ app.post("/run-query", (req: Request, res: Response) => {
     if (err) {
       res.status(500).send("Internal server error");
     } else {
-      res.send(results);
+      res.status(200).send(results);
     }
   });
 });

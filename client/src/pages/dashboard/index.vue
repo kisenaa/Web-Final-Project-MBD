@@ -7,6 +7,7 @@ import AdminPeople from './admin/People.vue';
 import AdminProject from './admin/Project.vue';
 import AdminCalendar from './admin/Calendar.vue';
 import AdminSubject from './admin/Subject.vue';
+import AdminAsdos from './admin/Asdos.vue';
 import AdminPracticum from './admin/Practicum.vue';
 import StudentCalendar from './student/Calendar.vue';
 import AssistantTimesheet from './assistant/Timesheet.vue';
@@ -62,6 +63,10 @@ defineOptions({
 
           <template v-if="sidebarStore.action === action.admin_project">
             <AdminProject />
+          </template>
+
+          <template v-if="sidebarStore.action === action.admin_asdos">
+            <AdminAsdos />
           </template>
 
           <template v-if="sidebarStore.action === action.admin_calendar">
