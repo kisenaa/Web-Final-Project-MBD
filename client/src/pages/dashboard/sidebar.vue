@@ -8,6 +8,7 @@ import StudentContent from './student/Content.vue';
 import AsdosContent from './assistant/Content.vue';
 
 const auth = AppStore.auth;
+const router = useRouter()
 
 const displayRole = (value: role) => {
   switch (value) {
@@ -105,8 +106,8 @@ const displayRole = (value: role) => {
         tabindex="0"
         class="menu dropdown-content absolute -right-px z-[4] w-44 rounded-box bg-base-100 shadow"
       >
-        <li><a>Sign out</a></li>
-        <li><a>Profile</a></li>
+      <li><button @click="() => { auth.ResetAuth(); router.push('login'); }">Sign out</button></li>
+      <li><a>Profile</a></li>
       </ul>
     </div>
   </div>

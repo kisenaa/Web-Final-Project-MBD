@@ -13,8 +13,23 @@ const router = useRouter();
 const nrp = ref<string | null>('');
 const password = ref<string | null>('');
 const roles = ref<role>(role.student);
+const isFetching = ref(false);
+const wrongPassword = ref(false)
 
 const auth = AppStore.auth;
+
+const handleSuccessLogin = async () => {
+  await new Promise((resolve) => setTimeout(resolve, 300));
+  isFetching.value = false;
+  navigate();
+};
+
+const handleWrongLogin = async () => {
+  await new Promise((resolve) => setTimeout(resolve, 300));
+  isFetching.value = false;
+  wrongPassword.value = true;
+  console.log('Wrong ID or Password');
+}
 
 const handleLogin = async () => {
   if (roles.value === role.admin || roles.value === role.guest) {
@@ -49,7 +64,7 @@ const handleLogin = async () => {
     console.log(result);
 
     if (Array.isArray(result) && result.length === 0) {
-      console.log('Wrong ID or Password');
+      handleWrongLogin();
       return;
     }
 
@@ -60,7 +75,7 @@ const handleLogin = async () => {
           role: roles.value,
           username: result[0].mhs_nama,
         });
-        await navigate();
+        handleSuccessLogin();
         return;
       }
     } else if (roles.value === role.asdos) {
@@ -70,11 +85,11 @@ const handleLogin = async () => {
           role: roles.value,
           username: result[0].asdos_nama,
         });
-        await navigate();
+        handleSuccessLogin();
         return;
       }
     }
-    console.log('WRONG ID / PASSWORD');
+    handleWrongLogin();
   } catch (err) {
     console.log(err);
   }
@@ -108,7 +123,8 @@ const navigate = async () => {
         <span>Email Address</span>
         <div
           class="input input-md mb-1 flex w-full items-center rounded-lg bg-gray-100 px-0 focus-within:outline-sky-300"
-        >
+          :class="wrongPassword === true ? 'focus-visible:outline-red-400 outline-red-400 outline-2 outline':''"
+          >
           <input
             type="text"
             class="input grow rounded-lg pl-4"
@@ -127,6 +143,7 @@ const navigate = async () => {
         <span>Password</span>
         <div
           class="input input-md flex w-full items-center rounded-lg bg-gray-100 px-0 focus-within:outline-sky-300"
+          :class="wrongPassword === true ? 'focus-visible:outline-red-400 outline-red-400 outline-2 outline':''"
         >
           <input
             type="text"
@@ -193,10 +210,17 @@ const navigate = async () => {
         </div>
 
         <button
-          class="my-4 w-full rounded-lg bg-blue-600 py-3 text-center text-white shadow-xl hover:brightness-90"
-          @click="async () => handleLogin()"
+          class="my-4 w-full rounded-lg py-3 text-center text-white shadow-xl hover:brightness-90 transition-all"
+          :class="isFetching === true ? 'bg-yellow-600/90' : 'bg-blue-600'"
+          @click="
+            async () => {
+              wrongPassword = false;
+              isFetching = true;
+              await handleLogin();
+            }
+          "
         >
-          Login Now
+          {{isFetching === true ? 'Logging in ...' : 'Login Now'}}
         </button>
       </div>
 
