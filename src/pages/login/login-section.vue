@@ -3,11 +3,13 @@
 import MdiStudent from '~icons/mdi/account-student';
 import MdiPersonStar from '~icons/mdi/person-star';
 import MdiShieldPerson from '~icons/mdi/shield-person';
+import { role } from '../../constant/pageConstant';
 
 const router = useRouter();
 
 const nrp = ref<string | null>('');
 const password = ref<string | null>('');
+const roles = ref<role>(role.student);
 
 const navigate = () => {
   router.push('dashboard');
@@ -85,6 +87,8 @@ const navigate = () => {
           <button
             class="group tooltip tooltip-secondary flex w-1/3 justify-center rounded-l-md border-y-0 border-l-0 border-r border-solid border-purple-600 p-3 transition duration-300 ease-in-out hover:bg-pink-400/70"
             data-tip="Student"
+            :class="roles === role.student ? 'bg-pink-400/70' : ''"
+            @click="roles = role.student"
           >
             <MdiStudent
               name="password"
@@ -96,6 +100,8 @@ const navigate = () => {
           <button
             class="group tooltip tooltip-accent flex w-1/3 justify-center border-y-0 border-l-0 border-r border-solid border-purple-600 p-3 transition duration-300 ease-in-out hover:bg-orange-400/70"
             data-tip="Assistant"
+            :class="roles === role.asdos ? 'bg-orange-400/70' : ''"
+            @click="roles = role.asdos"
           >
             <MdiPersonStar
               name="password"
@@ -107,6 +113,8 @@ const navigate = () => {
           <button
             class="group tooltip tooltip-primary flex w-1/3 justify-center rounded-r-md p-3 transition duration-300 ease-in-out hover:bg-teal-400/80 hover:outline-none"
             data-tip="Admin"
+            :class="roles === role.admin ? 'bg-teal-400/80' : ''"
+            @click="roles = role.admin"
           >
             <MdiShieldPerson
               name="password"
