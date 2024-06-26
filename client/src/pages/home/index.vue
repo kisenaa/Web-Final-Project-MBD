@@ -2,6 +2,13 @@
 defineOptions({
   name: 'DashboardPage',
 });
+
+const router = useRouter();
+
+const navigateTo = () => {
+  router.push('/login');
+};
+
 </script>
 
 <template>
@@ -201,7 +208,7 @@ defineOptions({
       <div
         class="absolute left-[135px] top-[30px] inline-flex h-[30px] w-[134.57px] items-center justify-center gap-1.5"
       >
-        <div class="relative h-[30px] w-[134.57px]">
+        <div class="mouse-pointer relative h-[30px] w-[134.57px]">
           <img src="../../assets/image/Frame.png" alt="" />
         </div>
       </div>
@@ -221,12 +228,12 @@ defineOptions({
         Contact
       </div>
       <div
-        class="absolute left-[1197.04px] top-[21px] inline-flex h-[43px] w-[101px] items-center justify-start gap-2.5 rounded-3xl bg-blue-600 px-6 py-3.5"
+         @click="navigateTo()" class="mouse-pointer absolute left-[1197.04px] top-[21px] inline-flex h-[43px] w-[101px] items-center justify-start gap-2.5 rounded-3xl bg-blue-600 px-6 py-3.5"
       >
         <div
           class="font-['Inter'] text-[15px] font-semibold leading-[15px] text-white"
         >
-          Sign up
+          Log In
         </div>
       </div>
     </div>
