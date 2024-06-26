@@ -14,52 +14,74 @@ const nrp = ref<string | null>('');
 const password = ref<string | null>('');
 const roles = ref<role>(role.student);
 
-const auth = AppStore.auth
-
+const auth = AppStore.auth;
 
 const handleLogin = async () => {
-  if(roles.value === role.admin || roles.value === role.guest) {
-    auth.setAuth({nrp:'admin', username:'Admin', role:role.admin})
-    navigate();
+  if (roles.value === role.admin || roles.value === role.guest) {
+    auth.setAuth({ nrp: 'admin', username: 'Admin', role: role.admin });
+    await navigate();
+    return;
   }
 
-  const table = roles.value === role.student ? studentTable.table : assistantTable.table
-  const pk = roles.value === role.student ? studentTable.mhsnrp : assistantTable.asdoskode
-  const name = roles.value === role.student ? studentTable.nama : assistantTable.nama
+  const table =
+    roles.value === role.student ? studentTable.table : assistantTable.table;
+  const pk =
+    roles.value === role.student
+      ? studentTable.mhsnrp
+      : assistantTable.asdoskode;
+  const name =
+    roles.value === role.student ? studentTable.nama : assistantTable.nama;
 
   try {
-        const response = await fetch('http://localhost:5000/run-query', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({query: `SELECT ${pk},${name} FROM ${table} WHERE ${pk} = '${nrp.value}' LIMIT 1`})
+    const response = await fetch('http://localhost:5000/run-query', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        query: `SELECT ${pk},${name} FROM ${table} WHERE ${pk} = '${nrp.value}' LIMIT 1`,
+      }),
+    });
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const result = await response.json();
+    console.log(result);
+
+    if (Array.isArray(result) && result.length === 0) {
+      console.log('Wrong ID or Password');
+      return;
+    }
+
+    if (roles.value === role.student) {
+      if (result[0].mhs_nrp === password.value) {
+        auth.setAuth({
+          nrp: nrp.value!,
+          role: roles.value,
+          username: result[0].mhs_nama,
         });
-        if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`);
-        }
-        const result = await response.json();
-        console.log(result)
-
-        if(roles.value === role.student) {
-          if(result[0].mhs_nrp === password.value) {
-            auth.setAuth({nrp:nrp.value!, role:roles.value, username:result[0].mhs_nama})
-            navigate()
-          } 
-        } else if (roles.value === role.asdos) {
-          if(result[0].asdos_kode === password.value) {
-            auth.setAuth({nrp:nrp.value!, role:roles.value, username:result[0].asdos_nama})
-            navigate()
-          }
+        await navigate();
+        return;
       }
-      console.log("WRONG ID OR PASSWORD")
-      } catch (err) {
-       console.log(err)
+    } else if (roles.value === role.asdos) {
+      if (result[0].asdos_kode === password.value) {
+        auth.setAuth({
+          nrp: nrp.value!,
+          role: roles.value,
+          username: result[0].asdos_nama,
+        });
+        await navigate();
+        return;
       }
-}
+    }
+    console.log('WRONG ID / PASSWORD');
+  } catch (err) {
+    console.log(err);
+  }
+};
 
-const navigate = () => {
-  router.push('dashboard');
+const navigate = async () => {
+  await router.push('dashboard');
 };
 </script>
 
@@ -172,7 +194,7 @@ const navigate = () => {
 
         <button
           class="my-4 w-full rounded-lg bg-blue-600 py-3 text-center text-white shadow-xl hover:brightness-90"
-          @click="async() => handleLogin()"
+          @click="async () => handleLogin()"
         >
           Login Now
         </button>
