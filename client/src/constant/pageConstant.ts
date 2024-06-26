@@ -16,6 +16,7 @@ export enum action {
   admin_addPracticum,
   admin_reports,
   admin_rooms,
+  admin_asdos,
   admin_subject,
   student_calendar,
   asdos_timesheet,

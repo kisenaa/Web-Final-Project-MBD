@@ -175,6 +175,33 @@ const sidebarStore = AppStore.sidebar;
     >
   </button>
 
+  <!-- Asdos -->
+  <button
+    class="flex min-h-14 items-center rounded-lg pl-3 duration-200 ease-in hover:bg-slate-100"
+    :class="
+      sidebarStore.action === action.admin_asdos
+        ? 'bg-gradient-to-tr from-blue-200 to-blue-100'
+        : ''
+    "
+    @click="sidebarStore.setAction(action.admin_asdos)"
+  >
+    <MdiPeople
+      class="size-7"
+      :class="
+        sidebarStore.action === action.admin_asdos
+          ? 'text-[#2F80ED]'
+          : 'text-gray-700'
+      "
+    />
+    <span
+      class="pl-5 font-medium"
+      :class="
+        sidebarStore.action === action.admin_asdos ? 'text-[#2F80ED]' : ''
+      "
+      >Assistant</span
+    >
+  </button>
+
   <!-- Rooms -->
   <button
     class="flex min-h-14 items-center rounded-lg pl-3 duration-200 ease-in hover:bg-slate-100"

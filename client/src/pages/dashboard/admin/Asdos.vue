@@ -1,28 +1,31 @@
 <!-- eslint-disable vue/multi-word-component-names -->
 <script setup lang="ts">
-import { addSubject } from '~/services/addSubject';
+import { addAsdos } from '~/services/addAsdos';
 
-const subject_code = ref<string | null>('');
-const subject_name = ref<string | null>('');
-const subject_sks = ref<string | null>('');
-const subject_semester = ref<string | null>('');
+const asdos_kode = ref<string | null>('ASD000');
+const asdos_nama = ref<string | null>('');
+const asdos_nrp = ref<string | null>('');
+const asdos_angkatan = ref<string | null>('');
+const asdos_noTelp = ref<string | null>('');
 
 const handleSubmit = async () => {
-  const response = await addSubject({
-    code: subject_code.value,
-    name: subject_name.value,
-    sks: subject_sks.value,
-    semester: subject_semester.value,
+  const response = await addAsdos({
+    kode: asdos_kode.value,
+    nama: asdos_nama.value,
+    nrp: asdos_nrp.value,
+    angkatan: asdos_angkatan.value,
+    noTelp: asdos_noTelp.value,
   });
 
   if (response === 200) {
-    alert('Subject added successfully');
-    subject_code.value = '';
-    subject_name.value = '';
-    subject_sks.value = '';
-    subject_semester.value = '';
+    alert('Asdos added successfully!');
+    asdos_kode.value = '';
+    asdos_nama.value = '';
+    asdos_nrp.value = '';
+    asdos_angkatan.value = '';
+    asdos_noTelp.value = '';
   } else {
-    alert('Failed to add subject');
+    alert('Failed to add asdos');
   }
 };
 </script>
@@ -30,44 +33,44 @@ const handleSubmit = async () => {
 <template>
   <div class="min-h-screen bg-gray-100 flex items-center justify-center">
     <div class="bg-white p-8 rounded-lg shadow-lg w-full max-w-md">
-      <h2 class="text-2xl font-bold mb-6 text-center">Add Subject</h2>
+      <h2 class="text-2xl font-bold mb-6 text-center">Add Asdos</h2>
       <form @submit.prevent="handleSubmit">
         <div class="mb-4">
-          <label for="subject_code" class="block text-gray-700">Subject Code</label>
+          <label for="asdos_nrp" class="block text-gray-700">NRP</label>
           <input
             type="text"
-            id="subject_code"
-            v-model="subject_code"
+            id="asdos_nrp"
+            v-model="asdos_nrp"
             class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:border-blue-300"
             required
           />
         </div>
         <div class="mb-4">
-          <label for="subject_name" class="block text-gray-700">Subject Name</label>
+          <label for="asdos_nama" class="block text-gray-700">Name</label>
           <input
             type="text"
-            id="subject_name"
-            v-model="subject_name"
+            id="asdos_nama"
+            v-model="asdos_nama"
             class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:border-blue-300"
             required
           />
         </div>
         <div class="mb-4">
-          <label for="subject_sks" class="block text-gray-700">Subject SKS</label>
+          <label for="asdos_angkatan" class="block text-gray-700">Year (Ex: 22)</label>
           <input
             type="text"
-            id="subject_sks"
-            v-model="subject_sks"
+            id="asdos_angkatan"
+            v-model="asdos_angkatan"
             class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:border-blue-300"
             required
           />
         </div>
         <div class="mb-4">
-          <label for="subject_semester" class="block text-gray-700">Subject Semester</label>
+          <label for="asdos_noTelp" class="block text-gray-700">Phone Number</label>
           <input
             type="text"
-            id="subject_semester"
-            v-model="subject_semester"
+            id="asdos_noTelp"
+            v-model="asdos_noTelp"
             class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:border-blue-300"
             required
           />

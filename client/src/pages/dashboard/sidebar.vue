@@ -59,7 +59,7 @@ const displayRole = (value: role) => {
 
     <!--Contact Section -->
     <div
-      class="mx-auto mt-[15%] h-[14%] min-h-32 max-w-[calc(100%-2.5rem)] rounded-[20px] bg-gradient-to-r from-fuchsia-300 to-indigo-600"
+      class="mx-auto mt-[30%] h-[14%] min-h-32 max-w-[calc(100%-2.5rem)] rounded-[20px] bg-gradient-to-r from-fuchsia-300 to-indigo-600"
     >
       <div
         class="py-5 text-center text-sm font-semibold tracking-tight text-white"
