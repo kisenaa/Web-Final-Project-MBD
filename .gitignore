@@ -3,4 +3,4 @@
 .vscode
 build
 dist
-.env
+server/.env
