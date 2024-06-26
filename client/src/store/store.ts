@@ -6,7 +6,7 @@ import { IAuth } from '../Interface/interface';
 export const sidebar = defineStore('sidebar', {
   state: () => {
     return {
-      action: action.tables as action,
+      action: action.admin_tables as action,
     };
   },
   getters: {
@@ -33,6 +33,15 @@ export const auth = defineStore('auth', {
   actions: {
     setAuth(auth: Partial<IAuth>) {
       Object.assign(this.$state, auth);
+    },
+    loadState() {
+      const savedState = localStorage.getItem('auth');
+      if (savedState) {
+        Object.assign(this.$state, JSON.parse(savedState));
+      }
+    },
+    saveState() {
+      localStorage.setItem('auth', JSON.stringify(this.$state));
     },
   },
 });

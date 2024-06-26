@@ -2,5 +2,5 @@
 <script setup lang="ts"></script>
 
 <template>
-  <div class="text-center">project</div>
+  <div class="text-center">project for admin</div>
 </template>

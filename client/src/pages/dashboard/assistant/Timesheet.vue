@@ -2,5 +2,5 @@
 <script setup lang="ts"></script>
 
 <template>
-  <div class="text-center">Timesheet for admin</div>
+  <div class="text-center">Timesheet for assistant</div>
 </template>
