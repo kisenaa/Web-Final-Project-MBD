@@ -10,7 +10,7 @@ defineOptions({
   <div class="flex h-screen flex-row bg-gray-900">
     <!-- Login section -->
     <div
-      class="grid w-full place-items-center items-center overflow-y-auto bg-white px-6 py-4 align-middle lg:w-[30%] lg:min-w-[400px] lg:shrink-0"
+      class="grid w-full place-items-center items-center overflow-y-auto bg-white py-4 align-middle lg:w-[30%] lg:min-w-[400px] lg:shrink-0"
     >
       <Login />
     </div>

@@ -101,14 +101,14 @@ const navigate = async () => {
 </script>
 
 <template>
-  <div class="w-full px-2 2xl:px-4">
+  <div class="w-full px-2 2xl:px-8">
     <div class="flex flex-col px-1">
       <div class="mx-auto flex flex-row items-center gap-5">
         <div>
-          <Icon name="front-logo" class="size-16" />
+          <Icon name="front-logo" class="size-14" />
         </div>
         <div
-          class="pl-2 text-lg font-semibold text-indigo-900 lg:text-xl xl:text-2xl"
+          class="pl-2 text-lg font-semibold text-indigo-900 xl:text-xl 2xl:text-2xl"
         >
           Practicum Management <br />
           System
@@ -171,46 +171,46 @@ const navigate = async () => {
         >
           <!-- Student Button -->
           <button
-            class="group tooltip tooltip-secondary flex w-1/3 justify-center rounded-l-md border-y-0 border-l-0 border-r border-solid border-purple-600 p-3 transition duration-300 ease-in-out hover:bg-pink-400/70"
+            class="group tooltip tooltip-secondary flex w-1/3 justify-center rounded-l-md border-y-0 border-l-0 border-r border-solid border-purple-600 p-4 transition duration-300 ease-in-out hover:bg-pink-400/70"
             data-tip="Student"
             :class="roles === role.student ? 'bg-pink-400/70' : ''"
             @click="roles = role.student"
           >
             <MdiStudent
               name="password"
-              class="size-8 transition duration-300 ease-in-out group-hover:scale-110"
+              class="size-10 scale-125 transition duration-300 ease-in-out group-hover:scale-150"
             />
           </button>
 
           <!-- Assistant Button -->
           <button
-            class="group tooltip tooltip-accent flex w-1/3 justify-center border-y-0 border-l-0 border-r border-solid border-purple-600 p-3 transition duration-300 ease-in-out hover:bg-orange-400/70"
+            class="group tooltip tooltip-accent flex w-1/3 justify-center border-y-0 border-l-0 border-r border-solid border-purple-600 p-4 transition duration-300 ease-in-out hover:bg-orange-400/70"
             data-tip="Assistant"
             :class="roles === role.asdos ? 'bg-orange-400/70' : ''"
             @click="roles = role.asdos"
           >
             <MdiPersonStar
               name="password"
-              class="size-8 transition duration-300 ease-in-out group-hover:scale-110"
+              class="size-10 scale-125 transition duration-300 ease-in-out group-hover:scale-150"
             />
           </button>
           <!-- Admin Button -->
 
           <button
-            class="group tooltip tooltip-primary flex w-1/3 justify-center rounded-r-md p-3 transition duration-300 ease-in-out hover:bg-teal-400/80 hover:outline-none"
+            class="group tooltip tooltip-primary flex w-1/3 justify-center rounded-r-md p-4 transition duration-300 ease-in-out hover:bg-teal-400/80 hover:outline-none"
             data-tip="Admin"
             :class="roles === role.admin ? 'bg-teal-400/80' : ''"
             @click="roles = role.admin"
           >
             <MdiShieldPerson
               name="password"
-              class="size-8 transition duration-300 ease-in-out group-hover:scale-110"
+              class="size-10 scale-125 transition duration-300 ease-in-out group-hover:scale-150"
             />
           </button>
         </div>
 
         <button
-          class="my-4 w-full rounded-lg py-3 text-center text-white shadow-xl hover:brightness-90 transition-all"
+          class="my-4 w-full rounded-lg py-3 text-center text-white shadow-xl transition-all hover:brightness-90"
           :class="isFetching === true ? 'bg-yellow-600/90' : 'bg-blue-600'"
           @click="
             async () => {
