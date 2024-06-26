@@ -15,7 +15,7 @@ const handleSubmit = async () => {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        query: `INSERT INTO PRAKTIKUM VALUES ('${practicum_code}', '${room_code}', '${class_code}', '${practicum_title}', '${practicum_sched}')`
+        query: `INSERT INTO PRAKTIKUM VALUES ('${practicum_code.value}', '${room_code.value}', '${class_code.value}', '${practicum_title.value}', '${practicum_sched.value}')`
       }),
     });
     if (!response.ok) {
