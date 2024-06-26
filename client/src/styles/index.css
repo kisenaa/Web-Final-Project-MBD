@@ -64,3 +64,7 @@
 
   --dashboard-bg: #eef0f6;
 }
+
+.mouse-pointer {
+  cursor: pointer;
+}

@@ -1,11 +1,10 @@
 <!-- eslint-disable vue/multi-word-component-names -->
 <script setup lang="ts">
 
-const practicum_code = ref<string | null>('');
-const room_code = ref<string | null>('');
-const class_code = ref<string | null>('');
-const practicum_title = ref<string | null>('');
-const practicum_sched = ref<string | null>('');
+const subject_code = ref<string | null>('');
+const subject_name = ref<string | null>('');
+const subject_sks = ref<string | null>('');
+const subject_semester = ref<string | null>('');
 
 const handleSubmit = async () => {
   try {
@@ -15,7 +14,7 @@ const handleSubmit = async () => {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        query: `INSERT INTO PRAKTIKUM VALUES ('${practicum_code}', '${room_code}', '${class_code}', '${practicum_title}', '${practicum_sched}')`
+        query: `INSERT INTO MATA_KULIAH VALUES ('${subject_code}', '${subject_name}', '${subject_sks}', '${subject_semester}')`
       }),
     });
     if (!response.ok) {
@@ -32,54 +31,44 @@ const handleSubmit = async () => {
 <template>
   <div class="min-h-screen bg-gray-100 flex items-center justify-center">
     <div class="bg-white p-8 rounded-lg shadow-lg w-full max-w-md">
-      <h2 class="text-2xl font-bold mb-6 text-center">Add Practicum</h2>
+      <h2 class="text-2xl font-bold mb-6 text-center">Add Subject</h2>
       <form @submit.prevent="handleSubmit">
         <div class="mb-4">
-          <label for="practicum_code" class="block text-gray-700">Practicum Code</label>
+          <label for="subject_code" class="block text-gray-700">Subject Code</label>
           <input
             type="text"
-            id="practicum_code"
-            v-model="practicum_code"
+            id="subject_code"
+            v-model="subject_code"
             class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:border-blue-300"
             required
           />
         </div>
         <div class="mb-4">
-          <label for="room_code" class="block text-gray-700">Room Code</label>
+          <label for="subject_name" class="block text-gray-700">Subject Name</label>
           <input
             type="text"
-            id="room_code"
-            v-model="room_code"
+            id="subject_name"
+            v-model="subject_name"
             class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:border-blue-300"
             required
           />
         </div>
         <div class="mb-4">
-          <label for="class_code" class="block text-gray-700">Class Code</label>
+          <label for="subject_sks" class="block text-gray-700">Subject SKS</label>
           <input
             type="text"
-            id="class_code"
-            v-model="class_code"
+            id="subject_sks"
+            v-model="subject_sks"
             class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:border-blue-300"
             required
           />
         </div>
         <div class="mb-4">
-          <label for="practicum_title" class="block text-gray-700">Practicum Title</label>
+          <label for="subject_semester" class="block text-gray-700">Subject Semester</label>
           <input
             type="text"
-            id="practicum_title"
-            v-model="practicum_title"
-            class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:border-blue-300"
-            required
-          />
-        </div>
-        <div class="mb-6">
-          <label for="practicum_sched" class="block text-gray-700">Practicum Schedule</label>
-          <input
-            type="text"
-            id="practicum_sched"
-            v-model="practicum_sched"
+            id="subject_semester"
+            v-model="subject_semester"
             class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:border-blue-300"
             required
           />
