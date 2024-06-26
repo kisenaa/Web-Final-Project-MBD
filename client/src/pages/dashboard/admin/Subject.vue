@@ -14,7 +14,7 @@ const handleSubmit = async () => {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        query: `INSERT INTO MATA_KULIAH VALUES ('${subject_code}', '${subject_name}', '${subject_sks}', '${subject_semester}')`
+        query: `INSERT INTO MATA_KULIAH VALUES ('${subject_code.value}', '${subject_name.value}', '${subject_sks.value}', '${subject_semester.value}')`
       }),
     });
     if (!response.ok) {
