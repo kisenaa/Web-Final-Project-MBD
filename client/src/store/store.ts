@@ -6,7 +6,7 @@ import { IAuth } from '../Interface/interface';
 export const sidebar = defineStore('sidebar', {
   state: () => {
     return {
-      action: action.tables as action,
+      action: action.admin_tables as action,
     };
   },
   getters: {
@@ -34,5 +34,11 @@ export const auth = defineStore('auth', {
     setAuth(auth: Partial<IAuth>) {
       Object.assign(this.$state, auth);
     },
+    ResetAuth() {
+     this.username = 'Guest';
+     this.role = role.guest;
+     this.nrp = ''
+    }
   },
+  persist: true
 });

@@ -2,5 +2,5 @@
 <script setup lang="ts"></script>
 
 <template>
-  <div class="text-center">People</div>
+  <div class="text-center">People for admin</div>
 </template>

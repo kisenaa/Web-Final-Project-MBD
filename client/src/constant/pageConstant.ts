@@ -9,14 +9,16 @@ export enum PageConstant {
 
 // sidebar extion
 export enum action {
-  tables,
-  people,
-  project,
-  calendar,
-  timesheet,
-  reports,
-  rooms,
-  subject,
+  admin_tables,
+  admin_people,
+  admin_project,
+  admin_calendar,
+  admin_timesheet,
+  admin_reports,
+  admin_rooms,
+  admin_subject,
+  student_calendar,
+  asdos_timesheet,
 }
 
 // role or auth type

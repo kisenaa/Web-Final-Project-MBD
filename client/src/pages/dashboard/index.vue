@@ -1,14 +1,17 @@
 <script setup lang="ts">
-import { action } from '../../constant/pageConstant';
+import { action, role } from '../../constant/pageConstant';
 import AppStore from '../../store';
 import Sidebar from './sidebar.vue';
-import ViewTable from './admin/ViewTable.vue';
-import People from './admin/People.vue';
-import Project from './admin/Project.vue';
-import Calendar from './admin/Calendar.vue';
-import Timesheet from './admin/Timesheet.vue';
+import AdminViewTable from './admin/ViewTable.vue';
+import AdminPeople from './admin/People.vue';
+import AdminProject from './admin/Project.vue';
+import AdminCalendar from './admin/Calendar.vue';
+import AdminTimesheet from './admin/Timesheet.vue';
+import StudentCalendar from './student/Calendar.vue';
+import AssistantTimesheet from './assistant/Timesheet.vue';
 
 const sidebarStore = AppStore.sidebar;
+const auth = AppStore.auth;
 
 defineOptions({
   name: 'HomePage',
@@ -46,24 +49,41 @@ defineOptions({
         <!--Todo: adjust main content based on sidebar action value type -->
         <!--ex: if table is active, it will show up table. else show other action -->
 
-        <template v-if="sidebarStore.action === action.tables">
-          <ViewTable />
+        <!-- Admin -->
+        <template v-if="auth.role === role.admin || auth.role === role.guest">
+          <template v-if="sidebarStore.action === action.admin_tables">
+            <AdminViewTable />
+          </template>
+
+          <template v-if="sidebarStore.action === action.admin_people">
+            <AdminPeople />
+          </template>
+
+          <template v-if="sidebarStore.action === action.admin_project">
+            <AdminProject />
+          </template>
+
+          <template v-if="sidebarStore.action === action.admin_calendar">
+            <AdminCalendar />
+          </template>
+
+          <template v-if="sidebarStore.action === action.admin_timesheet">
+            <AdminTimesheet />
+          </template>
         </template>
 
-        <template v-if="sidebarStore.action === action.people">
-          <People />
+        <!-- Student -->
+        <template v-if="auth.role === role.student">
+          <template v-if="sidebarStore.action === action.student_calendar">
+            <StudentCalendar />
+          </template>
         </template>
 
-        <template v-if="sidebarStore.action === action.project">
-          <Project />
-        </template>
-
-        <template v-if="sidebarStore.action === action.calendar">
-          <Calendar />
-        </template>
-
-        <template v-if="sidebarStore.action === action.timesheet">
-          <Timesheet />
+        <!-- Assistant -->
+        <template v-if="auth.role === role.asdos">
+          <template v-if="sidebarStore.action === action.asdos_timesheet">
+            <AssistantTimesheet />
+          </template>
         </template>
       </div>
     </div>
