@@ -6,6 +6,7 @@ import AdminViewTable from './admin/ViewTable.vue';
 import AdminPeople from './admin/People.vue';
 import AdminProject from './admin/Project.vue';
 import AdminCalendar from './admin/Calendar.vue';
+import AdminSubject from './admin/Subject.vue';
 import AdminPracticum from './admin/Practicum.vue';
 import StudentCalendar from './student/Calendar.vue';
 import AssistantTimesheet from './assistant/Timesheet.vue';
@@ -70,8 +71,11 @@ defineOptions({
           <template v-if="sidebarStore.action === action.admin_addPracticum">
             <AdminPracticum />
           </template>
-        </template>
 
+          <template v-if="sidebarStore.action === action.admin_subject">
+            <AdminSubject />
+          </template>
+        </template>
         <!-- Student -->
         <template v-if="auth.role === role.student">
           <template v-if="sidebarStore.action === action.student_calendar">
@@ -85,6 +89,7 @@ defineOptions({
             <AssistantTimesheet />
           </template>
         </template>
+
       </div>
     </div>
   </div>
