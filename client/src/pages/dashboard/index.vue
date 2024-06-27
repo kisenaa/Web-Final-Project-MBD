@@ -14,6 +14,7 @@ import AssistantTimesheet from './assistant/Timesheet.vue';
 
 const sidebarStore = AppStore.sidebar;
 const auth = AppStore.auth;
+const ViewTable = AppStore.ViewTableState;
 
 defineOptions({
   name: 'HomePage',
@@ -30,23 +31,30 @@ defineOptions({
     </div>
 
     <!-- Parent Div -->
-    <div class="relative mr-9 mt-6 flex w-full flex-col">
+    <div class="relative mr-9 mt-6 flex w-full flex-col overflow-y-auto">
       <!-- Header -->
       <div class="flex h-fit w-full flex-row-reverse items-center gap-8">
         <Icon name="notifications" />
 
         <label
-          class="input input-bordered flex max-w-[70rem] items-center gap-2"
+          class="input input-bordered mt-1 flex max-w-[70rem] items-center gap-2"
         >
           <Icon name="search" class="size-6 opacity-70" />
-          <input type="text" class="grow" placeholder="Search" />
+          <input
+            type="text"
+            class="grow"
+            placeholder="Search"
+            @input="
+              (event) => (ViewTable.setAction((event.target as HTMLInputElement).value))
+            "
+          />
           <button class="kbd kbd-sm">ctrl + k</button>
         </label>
       </div>
 
       <!-- Main Content -->
       <div
-        class="mb-5 ml-[5%] mr-[4%] mt-20 grow justify-end rounded-2xl bg-white"
+        class="mb-5 ml-[5%] mr-[4%] mt-8 grow justify-end rounded-2xl bg-white"
       >
         <!--Todo: adjust main content based on sidebar action value type -->
         <!--ex: if table is active, it will show up table. else show other action -->

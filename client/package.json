@@ -21,6 +21,7 @@
     "preinstall": "npx only-allow pnpm"
   },
   "dependencies": {
+    "@tanstack/vue-table": "^8.17.3",
     "@vueuse/core": "^10.11.0",
     "axios": "^1.7.2",
     "nprogress": "^0.2.0",
