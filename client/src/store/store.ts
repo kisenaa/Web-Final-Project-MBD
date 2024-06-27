@@ -2,25 +2,6 @@ import { defineStore } from 'pinia';
 import { action, role } from '../constant/pageConstant';
 import { IAuth } from '../Interface/interface';
 
-// Sidebar data
-export const sidebar = defineStore('sidebar', {
-  state: () => {
-    return {
-      action: action.admin_tables as action,
-    };
-  },
-  getters: {
-    getAction: (state) => {
-      return state.action;
-    },
-  },
-  actions: {
-    setAction(value: action) {
-      this.action = value;
-    },
-  },
-});
-
 // Auth data
 export const auth = defineStore('auth', {
   state: () => {
@@ -42,6 +23,26 @@ export const auth = defineStore('auth', {
   },
   persist: true
 });
+
+// Sidebar data
+export const sidebar = defineStore('sidebar', {
+  state: () => {
+    return {
+      action: action.admin_tables as action,
+    };
+  },
+  getters: {
+    getAction: (state) => {
+      return state.action;
+    },
+  },
+  actions: {
+    setAction(value: action) {
+      this.action = value;
+    },
+  },
+});
+
 
 // table
 export const ViewTableState = defineStore('ViewTableState', {

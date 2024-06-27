@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { runQuery } from "./runQuery";
 
 export const addAsdos = async (asdos: any) => {
