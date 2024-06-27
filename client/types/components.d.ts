@@ -7,10 +7,13 @@ export {}
 /* prettier-ignore */
 declare module 'vue' {
   export interface GlobalComponents {
+    CustomCalendar: typeof import('./../src/components/CustomCalendar.vue')['default']
     CustomFilter: typeof import('./../src/components/Table/CustomFilter.vue')['default']
     Icon: typeof import('./../src/components/icon/icon.vue')['default']
+    LoadingWrapper: typeof import('./../src/components/loading-wrapper.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
+    TestCalendar: typeof import('./../src/components/TestCalendar.vue')['default']
     VueTanstack: typeof import('./../src/components/Table/VueTanstack.vue')['default']
   }
 }
