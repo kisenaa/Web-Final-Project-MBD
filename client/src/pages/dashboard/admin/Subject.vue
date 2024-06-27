@@ -2,7 +2,7 @@
 <script setup lang="ts">
 import { addSubject } from '~/services/addSubject';
 
-const subject_code = ref<string | null>('');
+const subject_code = ref<string | null>('TI000');
 const subject_name = ref<string | null>('');
 const subject_sks = ref<string | null>('');
 const subject_semester = ref<string | null>('');
@@ -32,16 +32,6 @@ const handleSubmit = async () => {
     <div class="bg-white p-8 rounded-lg shadow-lg w-full max-w-md">
       <h2 class="text-2xl font-bold mb-6 text-center">Add Subject</h2>
       <form @submit.prevent="handleSubmit">
-        <div class="mb-4">
-          <label for="subject_code" class="block text-gray-700">Subject Code</label>
-          <input
-            type="text"
-            id="subject_code"
-            v-model="subject_code"
-            class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:border-blue-300"
-            required
-          />
-        </div>
         <div class="mb-4">
           <label for="subject_name" class="block text-gray-700">Subject Name</label>
           <input

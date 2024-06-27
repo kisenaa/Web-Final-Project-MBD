@@ -28,3 +28,20 @@ app.post("/run-query", (req: Request, res: Response) => {
     }
   });
 });
+
+app.get('/run-query', async (req: Request, res: Response) => {
+  const query = req.query.query;
+
+  if (typeof query !== 'string') {
+    return res.status(400).send('Query parameter must be a string');
+  }
+
+  db.query(query, (err, results) => {
+    if (err) {
+      res.status(500).send("Internal server error");
+    } else {
+      res.json(results);
+    }
+  });
+});
+
