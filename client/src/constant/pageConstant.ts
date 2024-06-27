@@ -19,6 +19,7 @@ export enum action {
   admin_asdos,
   admin_subject,
   student_calendar,
+  student_class,
   asdos_timesheet,
 }
 

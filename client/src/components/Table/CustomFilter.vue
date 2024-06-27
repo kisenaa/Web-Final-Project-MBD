@@ -1,6 +1,6 @@
 <!-- CustomFilter.vue -->
 <template>
-  <div class="flex space-x-2 mt-2">
+  <div class="mt-2 flex space-x-2">
     <input
       v-model="filterValue"
       type="text"

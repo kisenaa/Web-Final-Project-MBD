@@ -14,7 +14,7 @@ const CallProcedure = async (nrp: string) => {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        query: `CALL GetPracticumForAsdos('${auth.nrp}')`,
+        query: `CALL get_student_classes('${auth.nrp}')`,
       }),
     });
     if (!response.ok) {
@@ -30,9 +30,9 @@ const CallProcedure = async (nrp: string) => {
 
 const columns = [
   {
-    id: 'prak_tglPraktikum',
-    accessorKey: 'prak_tglPraktikum',
-    header: 'Tanggal Praktikum',
+    id: 'kelas_kode',
+    accessorKey: 'kelas_kode',
+    header: 'Kode Kelas',
     // Additional configuration like sorting and filtering can be added here
   },
   {
@@ -42,15 +42,15 @@ const columns = [
     // Additional configuration like sorting and filtering can be added here
   },
   {
-    id: 'prak_judul',
-    accessorKey: 'prak_judul',
-    header: 'Judul Praktikum',
+    id: 'mk_kode',
+    accessorKey: 'mk_kode',
+    header: 'Mata Kuliah',
     // Additional configuration like sorting and filtering can be added here
   },
   {
-    id: 'ruang_kode',
-    accessorKey: 'ruang_kode',
-    header: 'Kode Ruangan',
+    id: 'mk_sks',
+    accessorKey: 'mk_sks',
+    header: 'Jumlah SKS',
     // Additional configuration like sorting and filtering can be added here
   },
 ];
