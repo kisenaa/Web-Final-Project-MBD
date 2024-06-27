@@ -15,7 +15,7 @@ const handleSubmit = async () => {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        query: `INSERT INTO PRAKTIKUM VALUES ('${practicum_code.value}', '${room_code.value}', '${class_code.value}', '${practicum_title.value}', '${practicum_sched.value}')`
+        query: `INSERT INTO PRAKTIKUM VALUES ('${practicum_code.value}', '${practicum_title.value}', '${practicum_sched.value}', '${room_code.value}', '${class_code.value}')`
       }),
     });
     if (!response.ok) {
@@ -45,26 +45,6 @@ const handleSubmit = async () => {
           />
         </div>
         <div class="mb-4">
-          <label for="room_code" class="block text-gray-700">Room Code</label>
-          <input
-            type="text"
-            id="room_code"
-            v-model="room_code"
-            class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:border-blue-300"
-            required
-          />
-        </div>
-        <div class="mb-4">
-          <label for="class_code" class="block text-gray-700">Class Code</label>
-          <input
-            type="text"
-            id="class_code"
-            v-model="class_code"
-            class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:border-blue-300"
-            required
-          />
-        </div>
-        <div class="mb-4">
           <label for="practicum_title" class="block text-gray-700">Practicum Title</label>
           <input
             type="text"
@@ -80,6 +60,26 @@ const handleSubmit = async () => {
             type="text"
             id="practicum_sched"
             v-model="practicum_sched"
+            class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:border-blue-300"
+            required
+          />
+        </div>
+        <div class="mb-4">
+          <label for="room_code" class="block text-gray-700">Room Code</label>
+          <input
+            type="text"
+            id="room_code"
+            v-model="room_code"
+            class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:border-blue-300"
+            required
+          />
+        </div>
+        <div class="mb-4">
+          <label for="class_code" class="block text-gray-700">Class Code</label>
+          <input
+            type="text"
+            id="class_code"
+            v-model="class_code"
             class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:border-blue-300"
             required
           />
