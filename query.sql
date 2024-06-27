@@ -1271,3 +1271,91 @@ BEGIN
     SET NEW.mk_kode = new_kode;
 END //
 DELIMITER ;
+
+CREATE VIEW ViewJumlahPraktikumPerMataKuliah AS
+SELECT 
+    mk.mk_kode,
+    mk.mk_nama,
+    COUNT(p.prak_kode) AS jumlah_praktikum
+FROM 
+    MATA_KULIAH mk
+JOIN 
+    KELAS k ON mk.mk_kode = k.mk_kode
+LEFT JOIN 
+    PRAKTIKUM p ON k.kelas_kode = p.kelas_kode
+GROUP BY 
+    mk.mk_kode, mk.mk_nama;
+    
+DELIMITER //
+CREATE PROCEDURE GetJumlahPraktikumPerMataKuliah()
+BEGIN
+    SELECT * FROM ViewJumlahPraktikumPerMataKuliah;
+END //
+DELIMITER ;
+
+--CALL GetJumlahPraktikumPerMataKuliah()
+
+DROP PROCEDURE IF EXISTS GetPracticumForAsdos;
+
+DELIMITER //
+CREATE PROCEDURE GetPracticumForAsdos (IN asdos_kode CHAR(6))
+BEGIN
+    SELECT 
+		K.kelas_kode,
+        MK.mk_nama, 
+        P.prak_judul, 
+        P.ruang_kode,
+        P.prak_tglPraktikum
+    FROM 
+        KELAS AS K
+    JOIN 
+        ASDOS_MEMBIMBING_KELAS AM ON AM.kelas_kode = K.kelas_kode
+	JOIN 
+        PRAKTIKUM P ON P.kelas_kode = K.kelas_kode
+	JOIN
+        MATA_KULIAH MK ON MK.mk_kode = K.mk_kode
+    WHERE 
+        AM.asdos_kode = asdos_kode;
+END//
+DELIMITER ;
+
+DELIMITER $$
+CREATE PROCEDURE get_student_classes(IN student_nrp CHAR(10))
+BEGIN
+    SELECT 
+        K.kelas_kode,
+        MK.mk_nama, 
+        MK.mk_kode,
+        MK.mk_sks
+    FROM 
+        KELAS AS K
+    JOIN 
+        PRAKTIKAN_MENGAMBIL_KELAS PM ON PM.kelas_kode = K.kelas_kode
+    JOIN
+        MATA_KULIAH MK ON MK.mk_kode = K.mk_kode
+    WHERE 
+        PM.mhs_nrp = student_nrp;
+END$$
+DELIMITER $$
+
+DELIMITER //
+CREATE PROCEDURE GetPraktikumDetails (IN in_mhs_nrp CHAR(10))
+BEGIN
+    SELECT 
+        P.prak_tglPraktikum, 
+        Mk.mk_nama, 
+        P.prak_judul, 
+        P.ruang_kode
+    FROM 
+        KELAS AS K
+    JOIN 
+        PRAKTIKAN_MENGAMBIL_KELAS PM ON PM.kelas_kode = K.kelas_kode
+    JOIN 
+        PRAKTIKUM P ON P.kelas_kode = K.kelas_kode
+    JOIN 
+        MATA_KULIAH MK ON MK.mk_kode = K.mk_kode
+    WHERE 
+        PM.mhs_nrp = in_mhs_nrp;
+END//
+DELIMITER ;
+
