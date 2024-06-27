@@ -17,7 +17,7 @@ const ParseTable = async (table: string) => {
       throw new Error(`HTTP error! status: ${response.status}`);
     }
     const data = await response.json();
-    datas.value = data[0]
+    datas.value = data
     console.log(datas.value);
   } catch (err) {
     console.log(err);
