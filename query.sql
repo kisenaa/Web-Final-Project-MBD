@@ -1164,8 +1164,8 @@ FROM `RUANGAN` r
 LEFT JOIN `PRAKTIKUM` p ON r.ruang_kode = p.ruang_kode
 GROUP BY r.ruang_kode;
 
+DROP PROCEDURE IF EXISTS generate_next_asdos_kode;
 DELIMITER //
-
 CREATE PROCEDURE generate_next_asdos_kode(OUT next_kode CHAR(6))
 BEGIN
     DECLARE last_kode CHAR(6);
@@ -1182,15 +1182,14 @@ BEGIN
         SET last_num = last_num + 1;
     ELSE
         SET last_num = 1;
-    END IF
+    END IF;
 
     SET next_kode = CONCAT('ASD', LPAD(last_num, 3, '0'));
 END //
-
 DELIMITER ;
 
+DROP TRIGGER IF EXISTS before_insert_asdos;
 DELIMITER //
-
 CREATE TRIGGER before_insert_asdos
 BEFORE INSERT ON ASDOS
 FOR EACH ROW
@@ -1199,5 +1198,76 @@ BEGIN
     CALL generate_next_asdos_kode(new_kode);
     SET NEW.asdos_kode = new_kode;
 END //
+DELIMITER ;
 
+DROP PROCEDURE IF EXISTS generate_next_praktikum_kode;
+DELIMITER //
+CREATE PROCEDURE generate_next_praktikum_kode(OUT next_kode CHAR(7))
+BEGIN
+    DECLARE last_kode CHAR(7);
+    DECLARE last_num INT;
+
+    SELECT prak_kode
+    INTO last_kode
+    FROM PRAKTIKUM
+    ORDER BY prak_kode DESC
+    LIMIT 1;
+
+    IF last_kode IS NOT NULL THEN
+        SET last_num = CAST(SUBSTRING(last_kode, 4) AS UNSIGNED);
+        SET last_num = last_num + 1;
+    ELSE
+        SET last_num = 1;
+    END IF;
+
+    SET next_kode = CONCAT('PRK', LPAD(last_num, 4, '0'));
+END //
+DELIMITER ;
+
+DROP TRIGGER IF EXISTS before_insert_praktikum;
+DELIMITER //
+CREATE TRIGGER before_insert_praktikum
+BEFORE INSERT ON PRAKTIKUM
+FOR EACH ROW
+BEGIN
+    DECLARE new_kode CHAR(7);
+    CALL generate_next_praktikum_kode(new_kode);
+    SET NEW.prak_kode = new_kode;
+END //
+DELIMITER ;
+
+DROP PROCEDURE IF EXISTS generate_next_mata_kuliah_kode;
+DELIMITER //
+CREATE PROCEDURE generate_next_mata_kuliah_kode(OUT next_kode CHAR(5))
+BEGIN
+    DECLARE last_kode CHAR(6);
+    DECLARE last_num INT;
+
+    SELECT mk_kode
+    INTO last_kode
+    FROM MATA_KULIAH
+    ORDER BY mk_kode DESC
+    LIMIT 1;
+
+    IF last_kode IS NOT NULL THEN
+        SET last_num = CAST(SUBSTRING(last_kode, 3) AS UNSIGNED);
+        SET last_num = last_num + 1;
+    ELSE
+        SET last_num = 1;
+    END IF;
+
+    SET next_kode = CONCAT('TI', LPAD(last_num, 3, '0'));
+END //
+DELIMITER ;
+
+DROP TRIGGER IF EXISTS before_insert_mata_kuliah;
+DELIMITER //
+CREATE TRIGGER before_insert_mata_kuliah
+BEFORE INSERT ON MATA_KULIAH
+FOR EACH ROW
+BEGIN
+    DECLARE new_kode CHAR(5);
+    CALL generate_next_mata_kuliah_kode(new_kode);
+    SET NEW.mk_kode = new_kode;
+END //
 DELIMITER ;
