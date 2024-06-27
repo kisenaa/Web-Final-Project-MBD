@@ -12,6 +12,7 @@ import AdminPracticum from './admin/Practicum.vue';
 import StudentCalendar from './student/Calendar.vue';
 import StudentClass from './student/Class.vue';
 import AssistantTimesheet from './assistant/Timesheet.vue';
+import AdminReport from './admin/Reports.vue'
 
 const sidebarStore = AppStore.sidebar;
 const auth = AppStore.auth;
@@ -106,7 +107,12 @@ onMounted(() => {
           <template v-if="sidebarStore.action === action.admin_subject">
             <AdminSubject />
           </template>
+
+          <template v-if="sidebarStore.action === action.admin_reports">
+            <AdminReport />
+          </template>
         </template>
+
         <!-- Student -->
         <template v-if="auth.role === role.student">
           <template v-if="sidebarStore.action === action.student_calendar">
