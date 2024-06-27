@@ -10,6 +10,7 @@ import AdminSubject from './admin/Subject.vue';
 import AdminAsdos from './admin/Asdos.vue';
 import AdminPracticum from './admin/Practicum.vue';
 import StudentCalendar from './student/Calendar.vue';
+import StudentClass from './student/Class.vue';
 import AssistantTimesheet from './assistant/Timesheet.vue';
 
 const sidebarStore = AppStore.sidebar;
@@ -18,6 +19,22 @@ const ViewTable = AppStore.ViewTableState;
 
 defineOptions({
   name: 'HomePage',
+});
+
+onMounted(() => {
+  if (auth.role === role.student) {
+    if (
+      sidebarStore.action !== action.student_class &&
+      sidebarStore.action !== action.student_calendar
+    ) {
+      sidebarStore.setAction(action.student_calendar);
+    }
+  }
+  else if (auth.role === role.asdos) {
+    if(sidebarStore.action !== action.asdos_timesheet) {
+      sidebarStore.setAction(action.asdos_timesheet);
+    }
+  }
 });
 </script>
 
@@ -45,7 +62,8 @@ defineOptions({
             class="grow"
             placeholder="Search"
             @input="
-              (event) => (ViewTable.setAction((event.target as HTMLInputElement).value))
+              (event) =>
+                ViewTable.setAction((event.target as HTMLInputElement).value)
             "
           />
           <button class="kbd kbd-sm">ctrl + k</button>
@@ -94,6 +112,10 @@ defineOptions({
           <template v-if="sidebarStore.action === action.student_calendar">
             <StudentCalendar />
           </template>
+
+          <template v-if="sidebarStore.action === action.student_class">
+            <StudentClass />
+          </template>
         </template>
 
         <!-- Assistant -->
@@ -102,7 +124,6 @@ defineOptions({
             <AssistantTimesheet />
           </template>
         </template>
-
       </div>
     </div>
   </div>

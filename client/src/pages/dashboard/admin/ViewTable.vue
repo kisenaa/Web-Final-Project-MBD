@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import cars from '../../../../public/cars.json';
 
 const datas = ref([]);
 
@@ -17,7 +16,8 @@ const ParseTable = async (table: string) => {
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
     }
-    datas.value = await response.json();
+    const data = await response.json();
+    datas.value = data[0]
     console.log(datas.value);
   } catch (err) {
     console.log(err);
