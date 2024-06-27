@@ -28,53 +28,65 @@ const handleSubmit = async () => {
 </script>
 
 <template>
-  <div class="min-h-screen bg-gray-100 flex items-center justify-center">
-    <div class="bg-white p-8 rounded-lg shadow-lg w-full max-w-md">
-      <h2 class="text-2xl font-bold mb-6 text-center">Add Subject</h2>
+  <div class="flex h-full items-center justify-center">
+    <div class="w-full max-w-md rounded-lg bg-white p-8 shadow-lg">
+      <h2 class="mb-6 text-center text-2xl font-bold">Add Subject</h2>
       <form @submit.prevent="handleSubmit">
         <div class="mb-4">
-          <label for="subject_code" class="block text-gray-700">Subject Code</label>
+          <label for="subject_code" class="block text-gray-700"
+            >Subject Code</label
+          >
           <input
-            type="text"
             id="subject_code"
             v-model="subject_code"
-            class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:border-blue-300"
+            placeholder="Enter code"
+            type="text"
+            class="w-full rounded-md border border-gray-300 bg-gray-100 px-3 py-2 focus:border-blue-300 focus:outline-none focus:ring"
             required
           />
         </div>
         <div class="mb-4">
-          <label for="subject_name" class="block text-gray-700">Subject Name</label>
+          <label for="subject_name" class="block text-gray-700"
+            >Subject Name</label
+          >
           <input
-            type="text"
             id="subject_name"
             v-model="subject_name"
-            class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:border-blue-300"
+            placeholder="Enter name"
+            type="text"
+            class="w-full rounded-md border border-gray-300 bg-gray-100 px-3 py-2 focus:border-blue-300 focus:outline-none focus:ring"
             required
           />
         </div>
         <div class="mb-4">
-          <label for="subject_sks" class="block text-gray-700">Subject SKS</label>
+          <label for="subject_sks" class="block text-gray-700"
+            >Subject SKS</label
+          >
           <input
-            type="text"
             id="subject_sks"
             v-model="subject_sks"
-            class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:border-blue-300"
+            type="text"
+            placeholder="Enter sks"
+            class="w-full rounded-md border border-gray-300 bg-gray-100 px-3 py-2 focus:border-blue-300 focus:outline-none focus:ring"
             required
           />
         </div>
         <div class="mb-4">
-          <label for="subject_semester" class="block text-gray-700">Subject Semester</label>
+          <label for="subject_semester" class="block text-gray-700"
+            >Subject Semester</label
+          >
           <input
-            type="text"
             id="subject_semester"
             v-model="subject_semester"
-            class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:border-blue-300"
+            type="text"
+            placeholder="Enter semester"
+            class="w-full rounded-md border border-gray-300 bg-gray-100 px-3 py-2 focus:border-blue-300 focus:outline-none focus:ring"
             required
           />
         </div>
         <button
           type="submit"
-          class="w-full bg-blue-500 text-white py-2 rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-300 focus:ring-opacity-50"
+          class="w-full rounded-md bg-blue-500 py-2 text-white hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-300 focus:ring-opacity-50"
         >
           Submit
         </button>

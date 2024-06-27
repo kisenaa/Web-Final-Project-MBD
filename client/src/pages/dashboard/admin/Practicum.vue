@@ -1,6 +1,6 @@
 <!-- eslint-disable vue/multi-word-component-names -->
 <script setup lang="ts">
-import {addPracticum } from '~/services/addPracticum';
+import { addPracticum } from '~/services/addPracticum';
 
 const practicum_code = ref<string | null>('');
 const room_code = ref<string | null>('');
@@ -31,53 +31,61 @@ const handleSubmit = async () => {
 </script>
 
 <template>
-  <div class="min-h-screen bg-gray-100 flex items-center justify-center">
-    <div class="bg-white p-8 rounded-lg shadow-lg w-full max-w-md">
-      <h2 class="text-2xl font-bold mb-6 text-center">Add Practicum</h2>
+  <div class="flex h-full items-center justify-center">
+    <div class="w-full max-w-md rounded-lg bg-white p-8 shadow-lg">
+      <h2 class="mb-6 text-center text-2xl font-bold">Add Practicum</h2>
       <form @submit.prevent="handleSubmit">
         <div class="mb-4">
           <label for="room_code" class="block text-gray-700">Room Code</label>
           <input
-            type="text"
             id="room_code"
             v-model="room_code"
-            class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:border-blue-300"
+            placeholder="Enter room code"
+            type="text"
+            class="w-full rounded-md border border-gray-300 bg-gray-100 px-3 py-2 focus:border-blue-300 focus:outline-none focus:ring"
             required
           />
         </div>
         <div class="mb-4">
           <label for="class_code" class="block text-gray-700">Class Code</label>
           <input
-            type="text"
             id="class_code"
             v-model="class_code"
-            class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:border-blue-300"
+            placeholder="Enter class code"
+            type="text"
+            class="w-full rounded-md border border-gray-300 bg-gray-100 px-3 py-2 focus:border-blue-300 focus:outline-none focus:ring"
             required
           />
         </div>
         <div class="mb-4">
-          <label for="practicum_title" class="block text-gray-700">Practicum Title</label>
+          <label for="practicum_title" class="block text-gray-700"
+            >Practicum Title</label
+          >
           <input
-            type="text"
             id="practicum_title"
             v-model="practicum_title"
-            class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:border-blue-300"
+            placeholder="Enter practicum title"
+            type="text"
+            class="w-full rounded-md border border-gray-300 bg-gray-100 px-3 py-2 focus:border-blue-300 focus:outline-none focus:ring"
             required
           />
         </div>
         <div class="mb-6">
-          <label for="practicum_sched" class="block text-gray-700">Schedule (YYYY-MM-DD HH-mm-SS)</label>
+          <label for="practicum_sched" class="block text-gray-700"
+            >Schedule (YYYY-MM-DD HH-mm-SS)</label
+          >
           <input
-            type="text"
             id="practicum_sched"
             v-model="practicum_sched"
-            class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:border-blue-300"
+            type="text"
+            placeholder="Enter schedule"
+            class="w-full rounded-md border border-gray-300 bg-gray-100 px-3 py-2 focus:border-blue-300 focus:outline-none focus:ring"
             required
           />
         </div>
         <button
           type="submit"
-          class="w-full bg-blue-500 text-white py-2 rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-300 focus:ring-opacity-50"
+          class="w-full rounded-md bg-blue-500 py-2 text-white hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-300 focus:ring-opacity-50"
         >
           Submit
         </button>
