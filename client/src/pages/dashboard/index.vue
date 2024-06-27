@@ -36,6 +36,11 @@ onMounted(() => {
       sidebarStore.setAction(action.asdos_timesheet);
     }
   }
+  else if (auth.role === role.admin) {
+    if(sidebarStore.action === action.asdos_timesheet || sidebarStore.action === action.student_class || sidebarStore.action === action.student_calendar) {
+      sidebarStore.setAction(action.admin_tables) ;
+    }
+  }
 });
 </script>
 
