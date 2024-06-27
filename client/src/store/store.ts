@@ -41,6 +41,7 @@ export const sidebar = defineStore('sidebar', {
       this.action = value;
     },
   },
+  persist: true
 });
 
 
