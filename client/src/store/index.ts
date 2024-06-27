@@ -1,9 +1,10 @@
-import { auth, sidebar } from './store';
+import { auth, sidebar, ViewTableState } from './store';
 
 const registerStore = () => {
   return {
     sidebar: sidebar(),
     auth: auth(),
+    ViewTableState: ViewTableState()
   };
 };
 

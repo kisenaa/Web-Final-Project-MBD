@@ -42,3 +42,17 @@ export const auth = defineStore('auth', {
   },
   persist: true
 });
+
+// table
+export const ViewTableState = defineStore('ViewTableState', {
+  state: () => {
+    return {
+      filter_query: ''
+    };
+  },
+  actions: {
+    setAction(value: string) {
+      this.filter_query = value;
+    },
+  },
+});

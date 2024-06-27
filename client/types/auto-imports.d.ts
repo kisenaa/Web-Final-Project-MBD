@@ -13,6 +13,8 @@ declare global {
   const $shallowRef: typeof import('vue/macros')['$shallowRef']
   const $toRef: typeof import('vue/macros')['$toRef']
   const EffectScope: typeof import('vue')['EffectScope']
+  const Table: typeof import('../src/store/store')['Table']
+  const ViewTableState: typeof import('../src/store/store')['ViewTableState']
   const asyncComputed: typeof import('@vueuse/core')['asyncComputed']
   const auth: typeof import('../src/store/store')['auth']
   const autoResetRef: typeof import('@vueuse/core')['autoResetRef']
@@ -280,6 +282,9 @@ declare global {
   const useWindowFocus: typeof import('@vueuse/core')['useWindowFocus']
   const useWindowScroll: typeof import('@vueuse/core')['useWindowScroll']
   const useWindowSize: typeof import('@vueuse/core')['useWindowSize']
+  const v: typeof import('../src/store/store')['v']
+  const view: typeof import('../src/store/store')['view']
+  const viewRT: typeof import('../src/store/store')['viewRT']
   const watch: typeof import('vue')['watch']
   const watchArray: typeof import('@vueuse/core')['watchArray']
   const watchAtMost: typeof import('@vueuse/core')['watchAtMost']
@@ -316,6 +321,7 @@ declare module 'vue' {
     readonly $shallowRef: UnwrapRef<typeof import('vue/macros')['$shallowRef']>
     readonly $toRef: UnwrapRef<typeof import('vue/macros')['$toRef']>
     readonly EffectScope: UnwrapRef<typeof import('vue')['EffectScope']>
+    readonly ViewTableState: UnwrapRef<typeof import('../src/store/store')['ViewTableState']>
     readonly asyncComputed: UnwrapRef<typeof import('@vueuse/core')['asyncComputed']>
     readonly auth: UnwrapRef<typeof import('../src/store/store')['auth']>
     readonly autoResetRef: UnwrapRef<typeof import('@vueuse/core')['autoResetRef']>
@@ -612,6 +618,7 @@ declare module '@vue/runtime-core' {
     readonly $shallowRef: UnwrapRef<typeof import('vue/macros')['$shallowRef']>
     readonly $toRef: UnwrapRef<typeof import('vue/macros')['$toRef']>
     readonly EffectScope: UnwrapRef<typeof import('vue')['EffectScope']>
+    readonly ViewTableState: UnwrapRef<typeof import('../src/store/store')['ViewTableState']>
     readonly asyncComputed: UnwrapRef<typeof import('@vueuse/core')['asyncComputed']>
     readonly auth: UnwrapRef<typeof import('../src/store/store')['auth']>
     readonly autoResetRef: UnwrapRef<typeof import('@vueuse/core')['autoResetRef']>
