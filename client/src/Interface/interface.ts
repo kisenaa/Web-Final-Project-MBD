@@ -17,8 +17,8 @@ export interface Asdos {
   asdos_kode: string;
   asdos_nama: string;
   asdos_nrp: string;
-  asdos_angkatan:string
-  asdos_noTelp:string
+  asdos_angkatan: string;
+  asdos_noTelp: string;
 }
 
 export interface MataKuliah {

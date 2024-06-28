@@ -2,7 +2,6 @@
 <script setup lang="ts">
 import { addAsdos } from '~/services/addAsdos';
 
-
 const asdos_nama = ref<string | null>('');
 const asdos_nrp = ref<string | null>('');
 const asdos_angkatan = ref<string | null>('');
@@ -17,7 +16,6 @@ const generateAsdosKode = () => {
   const randomNumbers = Array.from({ length: 3 }, getRandomNumber).join('');
   return `ASD${randomNumbers}`;
 };
-
 
 const handleSubmit = async () => {
   const response = await addAsdos({

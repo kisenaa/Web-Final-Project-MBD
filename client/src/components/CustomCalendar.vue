@@ -1,6 +1,5 @@
 <!-- eslint-disable vue/multi-word-component-names -->
 <script setup lang="ts">
-
 const props = defineProps({
   initialPage: {
     type: Object,
@@ -33,13 +32,11 @@ const props = defineProps({
   },
 });
 
-
 const emit = defineEmits(['setLoaded']);
 
 onMounted(() => {
   emit('setLoaded');
 });
-
 </script>
 
 <template>

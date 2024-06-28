@@ -66,7 +66,6 @@ const sidebarStore = AppStore.sidebar;
     >
   </button>
 
-
   <!-- Calendar -->
   <button
     class="flex min-h-14 items-center rounded-lg pl-3 duration-200 ease-in hover:bg-slate-100"
@@ -115,7 +114,9 @@ const sidebarStore = AppStore.sidebar;
     <span
       class="pl-5 font-medium"
       :class="
-        sidebarStore.action === action.admin_addPracticum ? 'text-[#2F80ED]' : ''
+        sidebarStore.action === action.admin_addPracticum
+          ? 'text-[#2F80ED]'
+          : ''
       "
       >Practicum</span
     >

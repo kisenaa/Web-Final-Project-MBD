@@ -18,12 +18,12 @@ export const auth = defineStore('auth', {
       Object.assign(this.$state, auth);
     },
     ResetAuth() {
-     this.username = 'Guest';
-     this.role = role.guest;
-     this.nrp = ''
-    }
+      this.username = 'Guest';
+      this.role = role.guest;
+      this.nrp = '';
+    },
   },
-  persist: true
+  persist: true,
 });
 
 // Sidebar data
@@ -43,16 +43,15 @@ export const sidebar = defineStore('sidebar', {
       this.action = value;
     },
   },
-  persist: true
+  persist: true,
 });
-
 
 // table
 export const ViewTableState = defineStore('ViewTableState', {
   state: () => {
     return {
       filter_query: '',
-      datas:[],
+      datas: [],
     };
   },
   actions: {
@@ -60,7 +59,7 @@ export const ViewTableState = defineStore('ViewTableState', {
       this.filter_query = value;
     },
     setDatas(value: unknown[]) {
-      this.datas = value as any
-    }
+      this.datas = value as any;
+    },
   },
 });

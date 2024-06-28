@@ -4,7 +4,7 @@ const registerStore = () => {
   return {
     sidebar: sidebar(),
     auth: auth(),
-    ViewTableState: ViewTableState()
+    ViewTableState: ViewTableState(),
   };
 };
 

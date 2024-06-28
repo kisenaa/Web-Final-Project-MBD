@@ -85,14 +85,14 @@ const table = useVueTable({
                     'cursor-pointer select-none': header.column.getCanSort(),
                   }"
                 >
-                <div
-                class="flex items-center space-x-2"
-                :class="
+                  <div
+                    class="flex items-center space-x-2"
+                    :class="
                       header.column.getCanSort()
-                      ? 'cursor-pointer select-none'
-                      : ''
-                      "
-                      @click="header.column.getToggleSortingHandler()?.($event)"
+                        ? 'cursor-pointer select-none'
+                        : ''
+                    "
+                    @click="header.column.getToggleSortingHandler()?.($event)"
                   >
                     <FlexRender
                       :render="header.column.columnDef.header"

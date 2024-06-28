@@ -2,7 +2,6 @@
 <script setup lang="ts">
 import AppStore from '../../../store';
 
-
 const datas = ref([]);
 const auth = AppStore.auth;
 
@@ -21,7 +20,7 @@ const CallProcedure = async (nrp: string) => {
       throw new Error(`HTTP error! status: ${response.status}`);
     }
     const data = await response.json();
-    datas.value = data[0]
+    datas.value = data[0];
     console.log(datas.value);
   } catch (err) {
     console.log(err);
@@ -66,9 +65,6 @@ watch(auth, () => {
 
 <template>
   <div class="flex flex-col justify-center">
-    <VueTanstack
-      :data="datas"
-      :columns="columns"
-    />
+    <VueTanstack :data="datas" :columns="columns" />
   </div>
 </template>

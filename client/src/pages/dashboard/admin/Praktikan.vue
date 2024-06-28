@@ -16,8 +16,7 @@ const handleSubmit = async () => {
   if (response === 200) {
     alert('Praktikan added successfully!');
     mhs_nama.value = '';
-    mhs_nrp.value = '',
-    mhs_angkatan.value = '';
+    (mhs_nrp.value = ''), (mhs_angkatan.value = '');
   } else {
     alert('Failed to add Praktikan');
   }

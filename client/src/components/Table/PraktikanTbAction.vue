@@ -11,19 +11,22 @@ const props = defineProps<{
 }>();
 
 const isPressed = ref(false);
-const tableState = AppStore.ViewTableState
+const tableState = AppStore.ViewTableState;
 
-const handleSubmit = async() => {
-  const response = await deleteData('PRAKTIKAN', [{props:'mhs_nrp',value:props.row.getValue('mhs_nrp')}]);
+const handleSubmit = async () => {
+  const response = await deleteData('PRAKTIKAN', [
+    { props: 'mhs_nrp', value: props.row.getValue('mhs_nrp') },
+  ]);
   if (response === 200) {
-    const newData = tableState.datas.filter((item: any) => item.mhs_nrp !== props.row.getValue('mhs_nrp'));
-    tableState.setDatas(newData)
+    const newData = tableState.datas.filter(
+      (item: any) => item.mhs_nrp !== props.row.getValue('mhs_nrp')
+    );
+    tableState.setDatas(newData);
     alert('Successfully deleted !');
   } else {
     alert('Failed to delete ! server error or PK/FK problem');
   }
-}
-
+};
 </script>
 
 <template>
@@ -68,34 +71,42 @@ const handleSubmit = async() => {
     <p class="text-center">Are you sure you want to delete these data?</p>
     <div class="mt-4 overflow-x-auto">
       <table class="table border border-solid border-[#dddddd]">
-  <thead>
-    <tr>
-      <th class="border border-solid border-[#dddddd]">ID</th>
-      <th class="border border-solid border-[#dddddd]">Nama</th>
-      <th class="border border-solid border-[#dddddd]">Angkatan</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr class="border border-solid border-[#dddddd]">
-      <td class="border border-solid border-[#dddddd]">{{ row.getValue('mhs_nrp') }}</td>
-      <td class="border border-solid border-[#dddddd]">{{ row.getValue('mhs_nama') }}</td>
-      <td class="border border-solid border-[#dddddd]">{{ row.getValue('mhs_angkatan') }}</td>
-    </tr>
-  </tbody>
-</table>
-
+        <thead>
+          <tr>
+            <th class="border border-solid border-[#dddddd]">ID</th>
+            <th class="border border-solid border-[#dddddd]">Nama</th>
+            <th class="border border-solid border-[#dddddd]">Angkatan</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="border border-solid border-[#dddddd]">
+            <td class="border border-solid border-[#dddddd]">
+              {{ row.getValue('mhs_nrp') }}
+            </td>
+            <td class="border border-solid border-[#dddddd]">
+              {{ row.getValue('mhs_nama') }}
+            </td>
+            <td class="border border-solid border-[#dddddd]">
+              {{ row.getValue('mhs_angkatan') }}
+            </td>
+          </tr>
+        </tbody>
+      </table>
     </div>
     <div class="mt-4 flex justify-center gap-4 rounded-sm">
       <button
         id="confirmYes"
         class="rounded-md bg-green-500 px-4 py-2 text-white hover:brightness-90"
-        @click="handleSubmit();isPressed = false;"
+        @click="
+          handleSubmit();
+          isPressed = false;
+        "
       >
         Yes
       </button>
       <button
         class="rounded-md bg-red-500 px-4 py-2 text-white hover:brightness-90"
-        @click="isPressed = false;"
+        @click="isPressed = false"
       >
         No
       </button>

@@ -20,8 +20,12 @@ const handleSubmit = async () => {
   ]);
   if (response === 200) {
     const newData = tableState.datas.filter(
-  (item: any) => !(item.kelas_kode === props.row.getValue('kelas_kode') && item.mhs_nrp === props.row.getValue('mhs_nrp'))
-);
+      (item: any) =>
+        !(
+          item.kelas_kode === props.row.getValue('kelas_kode') &&
+          item.mhs_nrp === props.row.getValue('mhs_nrp')
+        )
+    );
     tableState.setDatas(newData);
     alert('Successfully deleted !');
   } else {
@@ -85,7 +89,7 @@ const handleSubmit = async () => {
             </td>
             <td class="border border-solid border-[#dddddd]">
               {{ row.getValue('kelas_kode') }}
-           </td>
+            </td>
           </tr>
         </tbody>
       </table>

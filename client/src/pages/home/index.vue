@@ -3,9 +3,7 @@ defineOptions({
   name: 'DashboardPage',
 });
 
-const router = useRouter()
-
-
+const router = useRouter();
 </script>
 
 <template>

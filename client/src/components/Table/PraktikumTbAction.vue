@@ -78,7 +78,7 @@ const handleSubmit = async () => {
             <th class="border border-solid border-[#dddddd]">Tanggal</th>
             <th class="border border-solid border-[#dddddd]">Kode Ruangan</th>
             <th class="border border-solid border-[#dddddd]">Kode Kelas</th>
-        </tr>
+          </tr>
         </thead>
         <tbody>
           <tr class="border border-solid border-[#dddddd]">

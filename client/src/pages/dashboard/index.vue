@@ -12,7 +12,7 @@ import AdminPracticum from './admin/Practicum.vue';
 import StudentCalendar from './student/Calendar.vue';
 import StudentClass from './student/Class.vue';
 import AssistantTimesheet from './assistant/Timesheet.vue';
-import AdminReport from './admin/Reports.vue'
+import AdminReport from './admin/Reports.vue';
 
 const sidebarStore = AppStore.sidebar;
 const auth = AppStore.auth;
@@ -30,15 +30,17 @@ onMounted(() => {
     ) {
       sidebarStore.setAction(action.student_calendar);
     }
-  }
-  else if (auth.role === role.asdos) {
-    if(sidebarStore.action !== action.asdos_timesheet) {
+  } else if (auth.role === role.asdos) {
+    if (sidebarStore.action !== action.asdos_timesheet) {
       sidebarStore.setAction(action.asdos_timesheet);
     }
-  }
-  else if (auth.role === role.admin) {
-    if(sidebarStore.action === action.asdos_timesheet || sidebarStore.action === action.student_class || sidebarStore.action === action.student_calendar) {
-      sidebarStore.setAction(action.admin_tables) ;
+  } else if (auth.role === role.admin) {
+    if (
+      sidebarStore.action === action.asdos_timesheet ||
+      sidebarStore.action === action.student_class ||
+      sidebarStore.action === action.student_calendar
+    ) {
+      sidebarStore.setAction(action.admin_tables);
     }
   }
 });
@@ -110,7 +112,7 @@ onMounted(() => {
           </template>
 
           <template v-if="sidebarStore.action === action.admin_rooms">
-            <AdminRoom/>
+            <AdminRoom />
           </template>
 
           <template v-if="sidebarStore.action === action.admin_reports">

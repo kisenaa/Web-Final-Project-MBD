@@ -14,7 +14,7 @@ const nrp = ref<string | null>('');
 const password = ref<string | null>('');
 const roles = ref<role>(role.student);
 const isFetching = ref(false);
-const wrongPassword = ref(false)
+const wrongPassword = ref(false);
 
 const auth = AppStore.auth;
 
@@ -29,7 +29,7 @@ const handleWrongLogin = async () => {
   isFetching.value = false;
   wrongPassword.value = true;
   console.log('Wrong ID or Password');
-}
+};
 
 const handleLogin = async () => {
   if (roles.value === role.admin || roles.value === role.guest) {
@@ -123,8 +123,12 @@ const navigate = async () => {
         <span>Email Address</span>
         <div
           class="input input-md mb-1 flex w-full items-center rounded-lg bg-gray-100 px-0 focus-within:outline-sky-300"
-          :class="wrongPassword === true ? 'focus-visible:outline-red-400 outline-red-400 outline-2 outline':''"
-          >
+          :class="
+            wrongPassword === true
+              ? 'focus-visible:outline-red-400 outline-red-400 outline-2 outline'
+              : ''
+          "
+        >
           <input
             type="text"
             class="input grow rounded-lg pl-4"
@@ -143,7 +147,11 @@ const navigate = async () => {
         <span>Password</span>
         <div
           class="input input-md flex w-full items-center rounded-lg bg-gray-100 px-0 focus-within:outline-sky-300"
-          :class="wrongPassword === true ? 'focus-visible:outline-red-400 outline-red-400 outline-2 outline':''"
+          :class="
+            wrongPassword === true
+              ? 'focus-visible:outline-red-400 outline-red-400 outline-2 outline'
+              : ''
+          "
         >
           <input
             type="text"
@@ -220,7 +228,7 @@ const navigate = async () => {
             }
           "
         >
-          {{isFetching === true ? 'Logging in ...' : 'Login Now'}}
+          {{ isFetching === true ? 'Logging in ...' : 'Login Now' }}
         </button>
       </div>
 

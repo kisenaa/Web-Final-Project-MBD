@@ -2,7 +2,15 @@
 <script setup lang="ts">
 import { ColumnDef } from '@tanstack/vue-table';
 import { h } from 'vue';
-import { Asdos, AsdosMembimbingKelas, MataKuliah, Praktikan, PraktikanMengambilKelas, Praktikum, Ruangan } from '../../../Interface/interface';
+import {
+  Asdos,
+  AsdosMembimbingKelas,
+  MataKuliah,
+  Praktikan,
+  PraktikanMengambilKelas,
+  Praktikum,
+  Ruangan,
+} from '../../../Interface/interface';
 import AppStore from '../../../store';
 import PraktikanTbAction from '../../../components/Table/PraktikanTbAction.vue';
 import AsdosTbAction from '../../../components/Table/AsdosTbAction.vue';
@@ -158,7 +166,7 @@ const KelasColumn = [
   },
 ];
 
-const AsdosMembimbingKelasColumn:ColumnDef<AsdosMembimbingKelas>[] = [
+const AsdosMembimbingKelasColumn: ColumnDef<AsdosMembimbingKelas>[] = [
   {
     id: 'asdos_kode',
     accessorKey: 'asdos_kode',
@@ -178,7 +186,7 @@ const AsdosMembimbingKelasColumn:ColumnDef<AsdosMembimbingKelas>[] = [
   },
 ];
 
-const PraktikanMengambilKelasColumn:ColumnDef<PraktikanMengambilKelas>[] = [
+const PraktikanMengambilKelasColumn: ColumnDef<PraktikanMengambilKelas>[] = [
   {
     id: 'mhs_nrp',
     accessorKey: 'mhs_nrp',
@@ -198,7 +206,7 @@ const PraktikanMengambilKelasColumn:ColumnDef<PraktikanMengambilKelas>[] = [
   },
 ];
 
-const RuanganColumn:ColumnDef<Ruangan>[] = [
+const RuanganColumn: ColumnDef<Ruangan>[] = [
   {
     id: 'ruang_kode',
     accessorKey: 'ruang_kode',
@@ -224,7 +232,7 @@ const RuanganColumn:ColumnDef<Ruangan>[] = [
   },
 ];
 
-const PraktikumColumn:ColumnDef<Praktikum>[] = [
+const PraktikumColumn: ColumnDef<Praktikum>[] = [
   {
     id: 'prak_kode',
     accessorKey: 'prak_kode',

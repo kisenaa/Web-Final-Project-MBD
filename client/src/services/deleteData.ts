@@ -6,11 +6,13 @@ export const deleteData = async (table: string, data: unknown[]) => {
     throw new Error('props array is empty or undefined');
   }
 
-  const conditions = data.map((item:any) => {
-    return `${item.props} = '${item.value}'`;
-  }).join(' AND ');
+  const conditions = data
+    .map((item: any) => {
+      return `${item.props} = '${item.value}'`;
+    })
+    .join(' AND ');
 
   const query = `DELETE FROM ${table} WHERE ${conditions}`;
 
-  return runQuery(query, "POST");
+  return runQuery(query, 'POST');
 };

@@ -1,7 +1,7 @@
 <!-- eslint-disable @typescript-eslint/no-explicit-any -->
 <script setup lang="ts">
 import { type Row } from '@tanstack/vue-table';
-import {MataKuliah } from '../../Interface/interface';
+import { MataKuliah } from '../../Interface/interface';
 import MaterialSymbolsDeleteOutline from '~icons/material-symbols/delete-outline';
 import MaterialSymbolsEditSquareOutline from '~icons/material-symbols/edit-square-outline';
 import { deleteData } from '../../services/deleteData';

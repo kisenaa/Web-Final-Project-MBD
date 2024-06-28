@@ -1,7 +1,7 @@
 <!-- eslint-disable @typescript-eslint/no-explicit-any -->
 <script setup lang="ts">
 import { type Row } from '@tanstack/vue-table';
-import {AsdosMembimbingKelas, MataKuliah } from '../../Interface/interface';
+import { AsdosMembimbingKelas, MataKuliah } from '../../Interface/interface';
 import MaterialSymbolsDeleteOutline from '~icons/material-symbols/delete-outline';
 import MaterialSymbolsEditSquareOutline from '~icons/material-symbols/edit-square-outline';
 import { deleteData } from '../../services/deleteData';
@@ -20,8 +20,12 @@ const handleSubmit = async () => {
   ]);
   if (response === 200) {
     const newData = tableState.datas.filter(
-  (item: any) => !(item.kelas_kode === props.row.getValue('kelas_kode') && item.asdos_kode === props.row.getValue('asdos_kode'))
-);
+      (item: any) =>
+        !(
+          item.kelas_kode === props.row.getValue('kelas_kode') &&
+          item.asdos_kode === props.row.getValue('asdos_kode')
+        )
+    );
 
     tableState.setDatas(newData);
     alert('Successfully deleted !');
@@ -86,7 +90,7 @@ const handleSubmit = async () => {
             </td>
             <td class="border border-solid border-[#dddddd]">
               {{ row.getValue('kelas_kode') }}
-           </td>
+            </td>
           </tr>
         </tbody>
       </table>
