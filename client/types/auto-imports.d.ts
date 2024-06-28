@@ -14,6 +14,7 @@ declare global {
   const $toRef: typeof import('vue/macros')['$toRef']
   const EffectScope: typeof import('vue')['EffectScope']
   const Table: typeof import('../src/store/store')['Table']
+  const ViewTab: typeof import('../src/store/store')['ViewTab']
   const ViewTableState: typeof import('../src/store/store')['ViewTableState']
   const asyncComputed: typeof import('@vueuse/core')['asyncComputed']
   const auth: typeof import('../src/store/store')['auth']

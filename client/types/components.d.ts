@@ -7,12 +7,23 @@ export {}
 /* prettier-ignore */
 declare module 'vue' {
   export interface GlobalComponents {
+    AsdosMembimbing: typeof import('./../src/components/Table/AsdosMembimbing.vue')['default']
+    AsdosMembimbingTbAction: typeof import('./../src/components/Table/AsdosMembimbingTbAction.vue')['default']
+    AsdosTbAction: typeof import('./../src/components/Table/AsdosTbAction.vue')['default']
     CustomCalendar: typeof import('./../src/components/CustomCalendar.vue')['default']
     CustomFilter: typeof import('./../src/components/Table/CustomFilter.vue')['default']
     Icon: typeof import('./../src/components/icon/icon.vue')['default']
+    KelasTbAction: typeof import('./../src/components/Table/KelasTbAction.vue')['default']
     LoadingWrapper: typeof import('./../src/components/loading-wrapper.vue')['default']
+    MatkulTbAction: typeof import('./../src/components/Table/MatkulTbAction.vue')['default']
+    PraktikanMengambil: typeof import('./../src/components/Table/PraktikanMengambil.vue')['default']
+    PraktikanMengambilTbAction: typeof import('./../src/components/Table/PraktikanMengambilTbAction.vue')['default']
+    PraktikanTbAction: typeof import('./../src/components/Table/PraktikanTbAction.vue')['default']
+    PraktikumTbAction: typeof import('./../src/components/Table/PraktikumTbAction.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
+    RuanganTbAction: typeof import('./../src/components/Table/RuanganTbAction.vue')['default']
+    TdCheckbox: typeof import('./../src/components/Table/TdCheckbox.vue')['default']
     TestCalendar: typeof import('./../src/components/TestCalendar.vue')['default']
     VueTanstack: typeof import('./../src/components/Table/VueTanstack.vue')['default']
   }

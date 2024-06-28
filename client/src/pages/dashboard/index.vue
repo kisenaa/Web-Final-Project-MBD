@@ -3,8 +3,8 @@ import { action, role } from '../../constant/pageConstant';
 import AppStore from '../../store';
 import Sidebar from './sidebar.vue';
 import AdminViewTable from './admin/ViewTable.vue';
-import AdminPeople from './admin/People.vue';
-import AdminProject from './admin/Project.vue';
+import AdminPraktikan from './admin/Praktikan.vue';
+import AdminRoom from './admin/Room.vue';
 import AdminCalendar from './admin/Calendar.vue';
 import AdminSubject from './admin/Subject.vue';
 import AdminAsdos from './admin/Asdos.vue';
@@ -90,11 +90,7 @@ onMounted(() => {
           </template>
 
           <template v-if="sidebarStore.action === action.admin_people">
-            <AdminPeople />
-          </template>
-
-          <template v-if="sidebarStore.action === action.admin_project">
-            <AdminProject />
+            <AdminPraktikan />
           </template>
 
           <template v-if="sidebarStore.action === action.admin_asdos">
@@ -111,6 +107,10 @@ onMounted(() => {
 
           <template v-if="sidebarStore.action === action.admin_subject">
             <AdminSubject />
+          </template>
+
+          <template v-if="sidebarStore.action === action.admin_rooms">
+            <AdminRoom/>
           </template>
 
           <template v-if="sidebarStore.action === action.admin_reports">

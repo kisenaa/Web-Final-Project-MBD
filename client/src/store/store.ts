@@ -1,6 +1,8 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { defineStore } from 'pinia';
 import { action, role } from '../constant/pageConstant';
 import { IAuth } from '../Interface/interface';
+import { an } from 'vitest/dist/reporters-yx5ZTtEV';
 
 // Auth data
 export const auth = defineStore('auth', {
@@ -49,12 +51,16 @@ export const sidebar = defineStore('sidebar', {
 export const ViewTableState = defineStore('ViewTableState', {
   state: () => {
     return {
-      filter_query: ''
+      filter_query: '',
+      datas:[],
     };
   },
   actions: {
     setAction(value: string) {
       this.filter_query = value;
     },
+    setDatas(value: unknown[]) {
+      this.datas = value as any
+    }
   },
 });

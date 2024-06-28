@@ -62,37 +62,10 @@ const sidebarStore = AppStore.sidebar;
       :class="
         sidebarStore.action === action.admin_people ? 'text-[#2F80ED]' : ''
       "
-      >People</span
+      >Praktikan</span
     >
   </button>
 
-  <!-- Project -->
-  <button
-    class="flex min-h-14 items-center rounded-lg pl-3 duration-200 ease-in hover:bg-slate-100"
-    :class="
-      sidebarStore.action === action.admin_project
-        ? 'bg-gradient-to-tr from-blue-200 to-blue-100'
-        : ''
-    "
-    @click="sidebarStore.setAction(action.admin_project)"
-  >
-    <Icon
-      name="project"
-      class="w-[1.8rem]"
-      :class="
-        sidebarStore.action === action.admin_project
-          ? 'text-[#2F80ED]'
-          : 'text-gray-700'
-      "
-    />
-    <span
-      class="pl-5 font-medium"
-      :class="
-        sidebarStore.action === action.admin_project ? 'text-[#2F80ED]' : ''
-      "
-      >Project</span
-    >
-  </button>
 
   <!-- Calendar -->
   <button
@@ -171,7 +144,7 @@ const sidebarStore = AppStore.sidebar;
       :class="
         sidebarStore.action === action.admin_reports ? 'text-[#2F80ED]' : ''
       "
-      >Reports</span
+      >Statistics</span
     >
   </button>
 
