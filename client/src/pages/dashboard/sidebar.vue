@@ -6,6 +6,7 @@ import { role } from '../../constant/pageConstant';
 import AdminContent from './admin/Content.vue';
 import StudentContent from './student/Content.vue';
 import AsdosContent from './assistant/Content.vue';
+import { countPracticumStudent } from '../../services/countPracticumStudent';
 
 const auth = AppStore.auth;
 const router = useRouter();
@@ -22,6 +23,24 @@ const displayRole = (value: role) => {
       return 'Admin';
   }
 };
+
+const showModal = async () => {
+  if (auth.role === role.student) {
+    document.getElementById('my_modal_3').showModal();
+  }
+};
+
+const practicumCount = ref<number | null>(0);
+
+const getPracticumCount = async (nrp: string) => {
+  const response = await countPracticumStudent(nrp);
+  console.log(response);
+  practicumCount.value = response[0].practicum_count as number;
+};
+
+onMounted(() => {
+  getPracticumCount(auth.nrp);
+});
 </script>
 
 <template>
@@ -118,7 +137,34 @@ const displayRole = (value: role) => {
             Sign out
           </button>
         </li>
-        <li><a>Profile</a></li>
+
+        <li>
+          <button
+            @click="
+              () => {
+                showModal();
+              }
+            "
+          >
+            Profile
+          </button>
+        </li>
+        <dialog id="my_modal_3" className="modal">
+          <div className="modal-box">
+            <form method="dialog">
+              <button
+                className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2"
+              >
+                ✕
+              </button>
+            </form>
+            <h3 className="font-bold text-lg text-left">Your Profile</h3>
+            <p className="my-1">Name: {{ auth.username }}</p>
+            <p className="my-2">ID: {{ auth.nrp }}</p>
+            <p className="my-2">Role: {{ displayRole(auth.role) }}</p>
+            <p classname="my-1">Total Practicum : {{ practicumCount }}</p>
+          </div>
+        </dialog>
       </ul>
     </div>
   </div>

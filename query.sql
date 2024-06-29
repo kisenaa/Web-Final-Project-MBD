@@ -1359,3 +1359,21 @@ BEGIN
 END//
 DELIMITER ;
 
+DROP FUNCTION IF EXISTS count_practicums;
+DELIMITER //
+CREATE FUNCTION count_practicums(mhs_nrp CHAR(10)) RETURNS INT
+READS SQL DATA
+BEGIN
+    DECLARE practicum_count INT DEFAULT 0;
+
+    SELECT DISTINCT COUNT(P.prak_kode)
+    INTO practicum_count
+    FROM PRAKTIKUM P
+    JOIN KELAS K ON P.kelas_kode = K.kelas_kode
+    JOIN PRAKTIKAN_MENGAMBIL_KELAS PMK ON K.kelas_kode = PMK.kelas_kode
+    WHERE pmk.mhs_nrp = mhs_nrp;
+
+    RETURN practicum_count;
+END //
+
+DELIMITER ;

@@ -1,4 +1,5 @@
 <!-- eslint-disable vue/multi-word-component-names -->
+<!-- eslint-disable @typescript-eslint/no-explicit-any -->
 <script setup lang="ts">
 import AppStore from '../../../store';
 
@@ -33,6 +34,17 @@ const columns = [
     accessorKey: 'prak_tglPraktikum',
     header: 'Tanggal Praktikum',
     // Additional configuration like sorting and filtering can be added here
+    cell: (info: any) => {
+      const date = new Date(info.getValue());
+      const localDateString = date.toLocaleString('en-US', {
+        year: 'numeric',
+        month: '2-digit',
+        day: '2-digit',
+        hour: '2-digit',
+        minute: '2-digit',
+      });
+      return localDateString;
+    },
   },
   {
     id: 'mk_nama',
